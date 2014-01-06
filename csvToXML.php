@@ -11,24 +11,50 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', true);
 ini_set('auto_detect_line_endings', true);
 
-$inputFilename	= 'input2.csv'; //edited for simplicity
+$inputFilename	= 'input.csv'; //edited for simplicity
 $outputFilename	= 'output.xml';
 
 // Open csv to read
 $inputFile = fopen($inputFilename, 'rt');
 
-// Get the headers of the file
-$headers = fgetcsv($inputFile);
-//print_r($headers);
-//exit;
+// Get the headers of the file (seems pointless)
+// $headers = fgetcsv($inputFile);
+// print_r($headers);
+
+
+
+// NEW TRY FROM HERE
+
+// Create a new DOM document with pretty formatting
+$doc = new DomDocument();
+$doc->formatOutput = true;
+
+// Add a root node to the document
+$node = $doc->createElement('root');
+$root = $doc->appendChild($node);
+
+
+
+
+
+
+
+
+echo $doc->saveXML();
+
+
+
+// NEW TRY ENDS HERE!!
+
+exit; // IF NOT COMMENTED, THE SCRIPT ENDS HERE!
 
 // Create a new dom document with pretty formatting
 $doc = new DomDocument();
 $doc->formatOutput = true;
 
 // Add a root node to the document
-$root = $doc->createElement('rows');
-$root = $doc->appendChild($root);
+$node = $doc->createElement('root');
+$root = $doc->appendChild($node);
 
 // Loop through each row creating a <row> node with the correct data
 while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
@@ -37,8 +63,9 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 	
 	foreach ($headers as $i => $header)
 	{
-		$child = $doc->createElement(str_replace(' ', '_', $header));
-		$child = $container->appendChild($child);
+		$node = $doc->createElement(str_replace(' ', '_', $header));
+		$child = $container->appendChild($node);
+		
 		$value = $doc->createTextNode($row[$i]);
 		$value = $child->appendChild($value);
 	}
@@ -46,6 +73,8 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 	$root->appendChild($container);
 }
 
+
 echo $doc->saveXML();
+
 
 ?>
