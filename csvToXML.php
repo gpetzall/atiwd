@@ -73,7 +73,7 @@ function createCrime($crime_name, $crime_total, $doc = NULL)
 	
 	$crime = $doc->createElement('crime'); // Crime element added (to be appended outside the function).
 	$id = $crime->setAttribute('id',$crime_name); // Set an id attribute passed from the call.
-	$total = $crime->setAttribute('total',str_replace(",","",$crime_total)); // Set the total crime attribute passed from the call and remove the spare comma.
+	$total = $crime->setAttribute('total',str_replace(",","",str_replace("..","0",$crime_total))); // Set the total crime attribute passed from the call and remove the spare comma.
 	return $crime; // Returned for appending it to the DOM.
 }
 
@@ -148,8 +148,8 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 							
 							$violence_against_the_person = $doc->createElement('crime'); // Crime element added.
 							$id = $violence_against_the_person->setAttribute('id',$header); // Set an id attribute passed.
-							$total = $violence_against_the_person->setAttribute('total',str_replace(",","",$row[$i]));
-							// Set the total crime attribute passed from the call and remove the spare comma.
+							$total = $violence_against_the_person->setAttribute('total',str_replace(",","",str_replace("..","0",$row[$i])));
+							// Set the total crime attribute and remove the spare comma as well as the Action Fraud "..".
 							$victim_based_crime->appendChild($violence_against_the_person); // VBC takes parenthood of crime.
 							break;
 							
@@ -170,14 +170,14 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 						case "theft_offences": // Is a parent crime type, so uses variable declared outside.
 							$theft_offences = $doc->createElement('crime'); // Crime element added.
 							$id = $theft_offences->setAttribute('id',$header); // Set an id attribute.
-							$total = $theft_offences->setAttribute('total',str_replace(",","",$row[$i])); // Total crime and remove comma.
+							$total = $theft_offences->setAttribute('total',str_replace(",","",str_replace("..","0",$row[$i]))); // Total crime, remove comma and "..".
 							$victim_based_crime->appendChild($theft_offences); // VBC takes parenthood of crime.
 							break;
 						
 						case "burglary": // Is a parent crime type, so uses variable declared outside. Also a child, so last line is slightly different.
 							$burglary = $doc->createElement('crime'); // Crime element added.
 							$id = $burglary->setAttribute('id',$header); // Set an id attribute.
-							$total = $burglary->setAttribute('total',str_replace(",","",$row[$i])); // Total crime and remove comma.
+							$total = $burglary->setAttribute('total',str_replace(",","",str_replace("..","0",$row[$i]))); // Total crime, remove comma and "..".
 							$theft_offences->appendChild($burglary); // Theft offences takes parenthood of crime.
 							break;
 						
