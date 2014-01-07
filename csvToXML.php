@@ -259,9 +259,16 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 echo $doc->saveXML();
 
 
-$strxml = $doc->saveXML();
-$handle = fopen($outputFilename, "w");
-fwrite($handle, $strxml);
-fclose($handle);
+$save_xml = $doc->saveXML();
+$filename = fopen($outputFilename, "w");
+fwrite($filename, $save_xml);
+fclose($filename);
 
 ?>
+<p> The file <strong>"
+
+<?php
+echo $inputFilename;
+?>
+
+"</strong> was parsed into XML. View source to see the code or download the output file <a href="doc/output.xml">here</a>.</p>
