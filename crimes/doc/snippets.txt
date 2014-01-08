@@ -1,0 +1,39 @@
+Full list of possible variable names for areas
+
+$victim_based_crime;
+$other_crimes_against_society;
+$violence_against_the_person;
+$homicide; 
+$violence_with_injury;
+$violence_without_injury;
+$sexual_offences;
+$robbery;
+$theft_offences;
+$burglary;
+$domestic_burglary;
+$non_domestic_burglary;
+$vehicle_offences;
+$theft_from_the_person;
+$bicycle_theft;
+$shoplifting;
+$all_other_theft_offences;
+$criminal_damag_and_arson;
+$drug_offences;
+$possession_of_weapon_offences;
+$public_order_offences;
+$miscellaneous_crimes_against_society;
+$fraud;
+
+
+
+
+
+// Stuff for DOM
+
+$regions = $data->getElementsByTagName('region');
+foreach ($regions as $region)
+{
+	$node = $doc->createElement('region');
+	$node->setAttribute('id',$region->getAttribute('id'));
+	$crimes->appendChild($node);
+}

@@ -31,6 +31,7 @@
  *
  * Formatting strings:
  * http://www.w3schools.com/php/func_string_strtolower.asp
+ * http://uk3.php.net/str_replace
  * [Accessed on 2014-01-07]
 */
 
@@ -42,7 +43,7 @@ ini_set('auto_detect_line_endings', true);
 $inputFilename	= 'doc/input.csv'; 
 $outputFilename	= 'doc/output.xml';
 
-// Open csv to read.
+// Open CSV to read.
 $inputFile = fopen($inputFilename, 'rt');
 
 // Create a new DOM document with pretty formatting.
