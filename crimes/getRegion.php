@@ -131,7 +131,7 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 			$area_count = 0; // To make the loop make new children instead of overwriting itself.
 			//$region_total = 0; // Looping a total out of the iterations.
 			
-			$json['response']['crimes']['region']['total']=0; // Adding the combined total values for the region.
+			$json['response']['crimes']['region']['total']=0; // Places the total attribute before the other JSON elements.
 			
 			foreach($region_element->children() as $area) // Similar to the XML loop.
 			{
@@ -159,125 +159,19 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 			
 			echo json_encode($json); //Json!
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			break; // End of JSON block;
-		
-		
+			
 		default: // No XML or JSON in URL.
 			?><p>This page only works with the right URLs. Try making an <a href="get.php?response=xml&north_west">North West XML</a> or
 			<a href="get.php?response=json&north_west">North West JSON</a> request instead.</p><?php
 		
 		break;
 		
-	}
-	
-	
-	
+	} // End switch for XML/JSON selection.
 }
 else // No match for Region.
 {
-	echo " Invalid Region Request ";
+	echo " No match for Region. ";
 }
-
-// if ($response == 'xml' && isset($regi))
-// {
-	// echo "If statement is true";
-	
-	// switch ((string) $xml->children()->attributes()['id'])
-	// {
-		// case ($regi):
-			// echo " Match found. ";
-			
-			
-			
-			// break;
-		
-		
-		// default:
-			
-			// echo "Match not found";
-			
-			// break;
-	// } // End of region match switch.
-	
-	
-	
-	
-	
-	
-	
-	
-// }
-// elseif ($response == 'json' && isset($regi))
-// {
-	// echo "JSON it is! ";
-// }
-// else
-// {
-	// echo "Invalid request";
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
