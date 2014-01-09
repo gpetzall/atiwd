@@ -162,8 +162,8 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 			break; // End of JSON block;
 			
 		default: // No XML or JSON in URL.
-			?><p>This page only works with the right URLs. Try making an <a href="get.php?response=xml&north_west">North West XML</a> or
-			<a href="get.php?response=json&north_west">North West JSON</a> request instead.</p><?php
+			?><p>This page only works with the right URLs. Try making an <a href="getRegion.php?response=xml&north_west">North West XML</a> or
+			<a href="getRegion.php?response=json&north_west">North West JSON</a> request instead.</p><?php
 		
 		break;
 		
@@ -171,7 +171,8 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 }
 else // No match for Region.
 {
-	echo " No match for Region. ";
+	?><p>This page only works with the right URLs. Try making an <a href="getRegion.php?response=xml&regi=north_west">North West XML</a> or
+	<a href="getRegion.php?response=json&regi=north_west">North West JSON</a> request instead.</p><?php
 }
 
 ?>

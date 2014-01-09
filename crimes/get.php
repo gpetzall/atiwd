@@ -2,7 +2,7 @@
 /*
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-08
- * Modified: 2014-01-08
+ * Modified: 2014-01-09
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -32,6 +32,10 @@
  * For making it readable while coding (and provide good headers after):
  * http://stackoverflow.com/questions/1414325/is-headercontent-typetext-plain-necessary-at-all
  * http://www.php.net/manual/en/function.header.php
+ * [Accessed on 2014-01-08]
+ * 
+ * Making Strings Capitalize Each Word:
+ * http://www.php.net/manual/en/function.ucwords.php
  * [Accessed on 2014-01-08]
  * 
 */
@@ -82,7 +86,7 @@ switch ($response)
 			if ($region->attributes()['id'] == 'british_transport_police' || $region->attributes()['id'] == 'action_fraud') // Filtering national.
 			{
 				$node = $doc->createElement('national');
-				$node->setAttribute('id',ucwords(str_replace('_', ' ', (string) $region->attributes()['id'])));
+				$node->setAttribute('id',ucwords(str_replace('_', ' ', (string) $region->attributes()['id']))); // ucwords is Very Useful.
 				// Simple XML element with id attribute to string, change characters and add.
 				
 				$region_total = 0; // Variable for the region totals.
@@ -105,7 +109,7 @@ switch ($response)
 			else // (all other)
 			{
 				$node = $doc->createElement('region');
-				$node->setAttribute('id',ucwords(str_replace('_', ' ', (string) $region->attributes()['id'])));
+				$node->setAttribute('id',ucwords(str_replace('_', ' ', (string) $region->attributes()['id']))); // ucwords is Very Useful.
 				// Simple XML element with id attribute to string, change characters and add.
 				
 				$region_total = 0; // Variable for the region totals.
@@ -148,7 +152,7 @@ switch ($response)
 		{
 			if ($region->attributes()['id'] == 'british_transport_police' || $region->attributes()['id'] == 'action_fraud') // Filtering national.
 			{
-				$json['response']['crimes']['national'][$region_count]['id']=(string)ucwords(str_replace('_', ' ',$region->attributes()['id']));
+				$json['response']['crimes']['national'][$region_count]['id']=(string)ucwords(str_replace('_', ' ',$region->attributes()['id'])); // ucwords is Very Useful.
 				// Create region; put multiple numbered entries in region; which each hold one "id" that is the name of the XML-attribute pulled (same way as XML code).
 				
 				$region_total = 0; // Loop identical to XML loop.
@@ -168,7 +172,7 @@ switch ($response)
 			} // End if (national)
 			else // All other.
 			{
-				$json['response']['crimes']['region'][$region_count]['id']=(string)ucwords(str_replace('_', ' ',$region->attributes()['id']));
+				$json['response']['crimes']['region'][$region_count]['id']=(string)ucwords(str_replace('_', ' ',$region->attributes()['id'])); // ucwords is Very Useful.
 				// Create region; put multiple numbered entries in region; which each hold one "id" that is the name of the XML-attribute pulled (same way as XML code).
 				
 				$region_total = 0; // Loop identical to XML loop.
