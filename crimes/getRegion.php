@@ -59,13 +59,9 @@ $region_element = array_shift($region_element); // Returns the simple xml elemen
 
 if ($region_element instanceof SimpleXMLElement) // If a simle xml element was returned
 {
-	// echo " *Valid Region Request* ";
-	
-	switch ($response)
+	switch ($response) // Depending on the data response request.
 	{
 		case ('xml'): // Start of XML block.
-			// echo " *Valid XML Request* ";
-			
 			header("Content-type: text/xml"); // To display correctly.
 			
 			// Create a new DOM document with pretty formatting.
@@ -114,10 +110,6 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 			break; // End of XML block.
 		
 		case ('json'): // Start of JSON block.
-			// echo " *Valid JSON Request* ";
-			
-			
-			
 			header("Content-type: application/json"); // So that my Firefox "JSONview" add-on will display it properly.
 
 			$json = array(); // Regular array.
@@ -162,8 +154,8 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 			break; // End of JSON block;
 			
 		default: // No XML or JSON in URL.
-			?><p>This page only works with the right URLs. Try making an <a href="getRegion.php?response=xml&north_west">North West XML</a> or
-			<a href="getRegion.php?response=json&north_west">North West JSON</a> request instead.</p><?php
+			?><p>This page only works with the right URLs. Try making an <a href="getRegion.php?response=xml&regi=north_west">North West XML</a> or
+			<a href="getRegion.php?response=json&regi=north_west">North West JSON</a> request instead.</p><?php
 		
 		break;
 		

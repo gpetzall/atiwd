@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <crimes>
-  <region id="north_east">
+  <region id="north_east" previous="138982" total="12056">
     <area id="cleveland">
       <victim_based_crime>
         <crime id="violence_against_the_person" total="6370">
