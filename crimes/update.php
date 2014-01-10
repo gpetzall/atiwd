@@ -138,17 +138,10 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 				// NOTE: Updating the region element also updates the simple XML document ($xml).
 				$xml->asXML($outputFilename);
 				
-				echo $doc->saveXML();
+				// Display message.
+				echo $doc->saveXML(); 
 				
-				
-				
-				
-				
-				
-				
-				
-				
-				break;
+				break; // End of XML block.
 				
 			case ('json'): // Start of JSON block.
 				echo " *Valid region - Valid response request (JSON)* ";

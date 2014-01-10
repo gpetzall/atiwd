@@ -2,7 +2,7 @@
 /*
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2013-12-16
- * Modified: 2014-01-07
+ * Modified: 2014-01-10
  *
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -41,7 +41,8 @@ ini_set('auto_detect_line_endings', true);
 
 // Configure filename data.
 $inputFilename	= 'doc/input.csv'; 
-$outputFilename	= 'doc/output.xml';
+$outputFilename	= 'doc/crimes.xml'; // To make an XML file as a database for the other parts of the assignment.
+$backupFilename	= 'doc/backup.xml'; // To make a static backup that can be used to restore the XML database.
 
 // Open CSV to read.
 $inputFile = fopen($inputFilename, 'rt');
@@ -267,15 +268,18 @@ echo $doc->saveXML();
 
 
 $save_xml = $doc->saveXML();
-$filename = fopen($outputFilename, "w");
-fwrite($filename, $save_xml);
-fclose($filename);
+
+// Save the database output.
+$file = fopen($outputFilename, "w");
+fwrite($file, $save_xml);
+fclose($file);
+
+// Save the database backup copy.
+$file = fopen($backupFilename, "w");
+fwrite($file, $save_xml);
+fclose($file);
 
 ?>
-<p> The file <strong>"
-
-<?php
-echo $inputFilename;
-?>
-
-"</strong> was parsed into XML. View source to see the code or download the output file <a href="doc/output.xml">here</a>.</p>
+<p>The CSV file <strong>"<?php echo $inputFilename; ?>"</strong> was parsed into XML.</p>
+<p>Download the output file <a href="doc/backup.xml">here</a>.</p>
+<p>The file was also saved for edits in other parts of the assignment <a href="doc/crimes.xml">here</a>.</p>
