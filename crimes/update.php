@@ -147,7 +147,7 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 				
 				break; // End of XML block.
 				
-			case ('json'): // Start of JSON block.
+			case ('json'):  // Start of JSON block.
 				
 				header("Content-type: application/json"); // So that my Firefox "JSONview" add-on will display it properly.
 				
