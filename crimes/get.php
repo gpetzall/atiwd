@@ -62,6 +62,23 @@ $doc->formatOutput = true;
 $xml = simplexml_load_file($inputFilename);
 
 
+/*
+
+STILL TO DO!!!
+
+- Add England
+- Add Wales
+
+What to do:
+- Make sure to skip Wales in the loop!
+- Sum up all *regions* except Wales from the DOM that is displayed.
+- Add an england child with the total added up.
+- Add a wales child with the same data as in the region.
+
+*/
+
+
+
 
 switch ($response)
 {
