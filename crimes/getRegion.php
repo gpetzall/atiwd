@@ -2,7 +2,7 @@
 /*
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-08
- * Modified: 2014-01-08
+ * Modified: 2014-01-10
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -57,7 +57,7 @@ $xml = simplexml_load_file($inputFilename);
 $region_element = $xml->xpath("/crimes/region[@id='$regi']"); // A little bit of XPATH grabbing all elements with GET's id value.
 $region_element = array_shift($region_element); // Returns the simple xml element.
 
-if ($region_element instanceof SimpleXMLElement) // If a simle xml element was returned
+if ($region_element instanceof SimpleXMLElement) // If a simle xml element was returned (checks if the region is valid).
 {
 	switch ($response) // Depending on the data response request.
 	{
@@ -111,7 +111,7 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 		
 		case ('json'): // Start of JSON block.
 			header("Content-type: application/json"); // So that my Firefox "JSONview" add-on will display it properly.
-
+			
 			$json = array(); // Regular array.
 			$json['response']['timestamp']=time(); // Create the first array item and its child with a name of timestamp and value of time().
 			$json['response']['crimes']['year']='6-2013'; // Create a second child of response with a child named year and value "6-2013".

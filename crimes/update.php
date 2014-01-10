@@ -2,7 +2,7 @@
 /*
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-09
- * Modified: 2014-01-09
+ * Modified: 2014-01-10
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -22,6 +22,11 @@
  * Simple XML writing etc:
  * http://stackoverflow.com/questions/2370631/php-simplexml-how-to-set-attributes
  * [Accessed on 2014-01-09]
+ * 
+ * XPath issue solution:
+ * http://stackoverflow.com/questions/1006283/xpath-select-first-element-with-a-specific-attribute
+ * [Accessed on 2014-01-10]
+ * 
 */
 
 error_reporting(E_ALL | E_STRICT);
@@ -68,7 +73,7 @@ $region_element = $xml->xpath("/crimes/region[@id='$regi']"); // A little bit of
 $region_element = array_shift($region_element); // Returns the simple XML element.
 // NOTE: simple XML remembers where it's from later in the code when it is used.
 
-if ($region_element instanceof SimpleXMLElement) // If a simle xml element was returned.
+if ($region_element instanceof SimpleXMLElement) // If a simle xml element was returned (checks if the region is valid).
 {
 	if ($update != NULL)
 	{
@@ -93,14 +98,13 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 				
 				// Add the region.
 				$node = $doc->createElement('region');
-				$node->setAttribute('id',$regi); // Set name attribute. NOTE: DIFFERENT FROM OTHER CODE (doesn't format it) SO THAT IT CORRESPONDS WITH THE SPEC!
+				$node->setAttribute('id',$regi); // Set name attribute. NOTE: THE CODE DOES NOT CONVERT IT WITH ucwords.
 				$region = $crimes->appendChild($node); // Add it to the response.
 				
-				// Does the region have a total?
-				$total_check = $region_element->xpath("/crimes/region[@total]");
+				// Does the region have a total? (This was originally a big problem, see in references above.)
+				$total_check = $region_element->xpath("/crimes/region[@id='$regi'][@total]");
 				if (empty($total_check)) // No: Calculate the total as "previous" and add the update value as "total".
 				{
-					//echo "there is not total \n \n";
 					$region_total = 0; // Variable for the region totals.
 					
 					foreach($region_element->children() as $area) // Continue down the rabbit hole...
@@ -144,25 +148,63 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 				break; // End of XML block.
 				
 			case ('json'): // Start of JSON block.
-				echo " *Valid region - Valid response request (JSON)* ";
 				
+				header("Content-type: application/json"); // So that my Firefox "JSONview" add-on will display it properly.
 				
+				$json = array(); // Regular array.
+				$json['response']['timestamp']=time(); // Create the first array item and its child with a name of timestamp and value of time().
+				$json['response']['crimes']['year']='6-2013'; // Create a second child of response with a child named year and value "6-2013".
 				
-				// update a particular 
+				$json['response']['crimes']['region']['id']=$regi; // Create a child of crimes named region. NOTE: THE CODE DOES NOT CONVERT IT WITH ucwords.
 				
+				// Does the region have a total?
+				$total_check = $region_element->xpath("/crimes/region[@id='$regi'][@total]");
+				if (empty($total_check)) // No: Calculate the total as "previous" and add the update value as "total".
+				{
+					$region_total = 0; // Variable for the region totals.
+					
+					foreach($region_element->children() as $area) // Continue down the rabbit hole...
+					{
+						foreach($area->children() as $crime_type) // Continue down the rabbit hole...
+						{
+							foreach($crime_type->children() as $crime_top) // Continue down the rabbit hole...
+							{
+								$region_total += $crime_top->attributes()['total']; // Add up all the crime totals.
+							} // End crime_top foreach (national).
+						} // End crime_type foreach (national).
+					} // End area foreach (national).
+					
+					
+					// Display Message.
+					$json['response']['crimes']['region']['previous']=$region_total;
+					$json['response']['crimes']['region']['total']=$update;
+					echo json_encode($json); //Json!
+					
+					// Actual update in the database.
+					$region_element['previous'] = $region_total;
+					$region_element['total'] = $update;
+				}
+				else // Yes: 
+				{
+					// Display Message.
+					$json['response']['crimes']['region']['previous']=(int)$region_element->attributes()['total'];
+					$json['response']['crimes']['region']['total']=$update;
+					
+					echo json_encode($json); //Json!
+					
+					// Actual update in the database.
+					$region_element['previous'] = $region_element['total'];
+					$region_element['total'] = $update;
+				}
 				
+				// NOTE: Updating the region element also updates the simple XML document ($xml).
+				$xml->asXML($outputFilename);
 				
-				
-				
-				
-				
-				
-				
-				break;
-				
+				break; // End of JSON block;
 				
 			default: // No XML or JSON in URL.
-				?><p>This page only works with the right URLs. Try making an <a href="update.php?response=xml&regi=north_west&update=1000">North West XML Total:1000</a> or
+				?><p>This page only works with the right URLs (the region is valid, there a valid update request, but no proper data response requested (XML/JSON)).
+				Try making an <a href="update.php?response=xml&regi=north_west&update=1000">North West XML Total:1000</a> or
 				<a href="update.php?response=json&regi=north_west&update=1000">North West JSON Total:1000</a> request instead.</p><?php
 			break;	
 			
@@ -170,22 +212,17 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 		} // End of XML/JSON switch.
 	} // End of update value if.
 	else
-	{
+	{ // No valid update request.
+		?><p>This page only works with the right URLs (the region is valid, but there was no update request). Try making an
+		<a href="update.php?response=xml&regi=north_west&update=1000">North West XML Total:1000</a> or
+		<a href="update.php?response=json&regi=north_west&update=1000">North West JSON Total:1000</a> request instead.</p><?php
 		
-		echo " * Region is valid, but there was no update request * "; 
-		
-	}// Proper end of update value if.
-			
-			
-			
-			
-			
-			
-			
+	}// Final end of update value if.
+	
 } // End of simple XML element if.
 else
 {
-	?><p>This page only works with the right URLs. Try making an <a href="update.php?response=xml&regi=north_west&update=1000">North West XML Total:1000</a> or
+	?><p>This page only works with the right URLs (the region is at least not valid). Try making an <a href="update.php?response=xml&regi=north_west&update=1000">North West XML Total:1000</a> or
 	<a href="update.php?response=json&regi=north_west&update=1000">North West JSON Total:1000</a> request instead.</p><?php
 
 } // Proper end of simple XML element if.
