@@ -8,8 +8,8 @@
  * University of the West of England in the years 2013-2014. This is part B1 course
  * component, dealing with part "2.2.1".
  * 
- * The script updates the total crime value of one region of a particular id in the
- * "crimes.xml" file at http://www.cems.uwe.ac.uk/~~g2-petzall/atwd/crimes/doc/
+ * The script updates the total crime value of one region of a specified id in the
+ * "crimes.xml" file at http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/doc/
  * with the amount specified in the URL's GET and displays the new data.
  * 
  * 
@@ -35,13 +35,13 @@ ini_set('auto_detect_line_endings', true);
 
 
 // Validate GET information.
-if (isset($_GET['response'])) {
+if (isset($_GET['response'])) { // XML or JSON.
 	$response = $_GET['response'];
 } else {
 	$response = NULL;
 }
 
-if (isset($_GET['regi'])) {
+if (isset($_GET['regi'])) { // Region name.
 	$regi = $_GET['regi'];
 } else {
 	$regi = NULL;

@@ -8,7 +8,7 @@
  * University of the West of England in the years 2013-2014. This is part B1 course
  * component, dealing with part "2.1.2".
  * 
- * The script shows specific regions from the same source as 2.1.1 ("get.php" at this 
+ * The script shows specified regions from the same source as 2.1.1 ("get.php" at this 
  * location), returning the data as XML and Json.
  * 
  * 
@@ -34,13 +34,13 @@ ini_set('auto_detect_line_endings', true);
 // header("Content-type: text/plain"); // Easier to read.
 
 // Validate GET information.
-if (isset($_GET['response'])) {
+if (isset($_GET['response'])) { // XML or JSON.
 	$response = $_GET['response'];
 } else {
 	$response = NULL;
 }
 
-if (isset($_GET['regi'])) {
+if (isset($_GET['regi'])) { // Region name.
 	$regi = $_GET['regi'];
 } else {
 	$regi = NULL;

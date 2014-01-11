@@ -9,7 +9,7 @@
  * component, dealing with part "2.1.1".
  * 
  * The script accesses the database file "crimes.xml" located at
- * http://www.cems.uwe.ac.uk/~~g2-petzall/atwd/crimes/doc/
+ * http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/doc/
  * and return XML and Json crime totals of all regions.
  * 
  * 
@@ -45,7 +45,7 @@ ini_set('display_errors', true);
 ini_set('auto_detect_line_endings', true);
 
 // Validate GET information.
-if (isset($_GET['response'])) {
+if (isset($_GET['response'])) { // XML or JSON.
 	$response = $_GET['response'];
 } else {
 	$response = NULL;
