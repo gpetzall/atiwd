@@ -2,7 +2,7 @@
 /*
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-10
- * Modified: 2014-01-10
+ * Modified: 2014-01-11
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -17,7 +17,9 @@
  * 
  * Pages used as help to make this code:
  * 
- * headline:
+ * Making array with my own key names:
+ * http://stackoverflow.com/questions/15716608/create-custom-keys-in-array-with-php
+ * [Accessed 2014-01-11]
  * 
 */
 
@@ -53,10 +55,10 @@ if (isset($_GET['hom'])) {
 	}
 	catch (Exception $e)
 	{
-		$homicide = NULL;
+		$homicide = 0;
 	}
 } else {
-	$homicide = NULL;
+	$homicide = 0;
 }
 
 if (isset($_GET['vwi'])) {
@@ -67,10 +69,10 @@ if (isset($_GET['vwi'])) {
 	}
 	catch (Exception $e)
 	{
-		$violence_with_injury = NULL;
+		$violence_with_injury = 0;
 	}
 } else {
-	$violence_with_injury = NULL;
+	$violence_with_injury = 0;
 }
 
 if (isset($_GET['vwoi'])) {
@@ -81,13 +83,38 @@ if (isset($_GET['vwoi'])) {
 	}
 	catch (Exception $e)
 	{
-		$violence_without_injury = NULL;
+		$violence_without_injury = 0;
 	}
 } else {
-	$violence_without_injury = NULL;
+	$violence_without_injury = 0;
 }
 
-$update_array = array ($homicide,$violence_with_injury,$violence_without_injury); // For use later.
+
+$full_crime_array = array
+	(
+	'violence_against_the_person'=>$homicide+$violence_with_injury+$violence_without_injury,
+	'homicide'=>$homicide,
+	'violence_with_injury'=>$violence_with_injury,
+	'violence_without_injury'=>$violence_without_injury,
+	'sexual_offences'=>0,
+	'robbery'=>0,
+	'theft_offences'=>0,
+	'burglary'=>0,
+	'domestic_burglary'=>0,
+	'non_domestic_burglary'=>0,
+	'vehicle_offences'=>0,
+	'theft_from_the_person'=>0,
+	'bicycle_theft'=>0,
+	'shoplifting'=>0,
+	'all_other_theft_offences'=>0,
+	'criminal_damage_and_arson'=>0,
+	'drug_offences'=>0,
+	'possession_of_weapon_offences'=>0,
+	'public_order_offences'=>0,
+	'miscellaneous_crimes_against_society'=>0,
+	'fraud'=>0,
+	);
+
 
 // Configure filename data.
 $inputFilename = 'doc/crimes.xml';
@@ -101,25 +128,124 @@ header("Content-type: text/plain");
 $xml = simplexml_load_file($inputFilename);
 
 
+
+
+// Check if Wessex already exist!
+
+
+
 $region_element = $xml->xpath("/crimes/region[@id='$regi']"); // Finding the region.
 $region_element = array_shift($region_element); // Returns the simple XML element.
 
-if ($region_element instanceof SimpleXMLElement) // If a simle xml element was returned (checks if the region is valid).
+if ($region_element instanceof SimpleXMLElement) // If a simple xml element was returned (checks if the region is valid).
 {
 	if ($area != NULL) // If an area was provided.
 	{
-		echo "YES - Region \nYES - Area \"" . $area . "\"\n";
+		//echo "YES - Region \nYES - Area \"" . $area . "\"\n";
 		
 		switch ($response) // XML/JSON response request.
 		{
 			case 'xml':
-				$region_element->addChild('area')['id'] = $area;
+				
+				// Add the specified area.
+				$new_area = $region_element->addChild('area'); 
+				$new_area['id'] = $area;
+				$new_area['total'] = $homicide+$violence_with_injury+$violence_without_injury;
+				
+				// Add crime category so it's available for the foreach loop.
+				$new_area->addChild('victim_based_crime');
+				$victim_based_crime = $new_area->victim_based_crime->addChild('crime');
+				
+				// Add crime category so it's available for the foreach loop.
+				$new_area->addChild('other_crimes_against_society');
+				$other_crimes_against_society = $new_area->other_crimes_against_society->addChild('crime');
+				
+				// Add crime variables so they are available for the foreach loop.
+				$new_top_crime;
+				$new_crime;
+				
+				// Populate the full area (simple XML saves it to the main object automatically).
+				foreach ($full_crime_array as $key=>$crime_total)
+				{
+					switch ($key)
+						{
+						// The first entry also sets "victim_bas...". Otherwise identical to other top level crimes.
+						case 'violence_against_the_person':
+							$victim_based_crime['id'] = $key;
+							$victim_based_crime['total'] = $crime_total;
+							
+							$new_top_crime = $victim_based_crime->addChild('crime');
+							$new_top_crime['id'] = $key;
+							$new_top_crime['total'] = $crime_total;
+							break;
+						
+						// All top-level crimes
+						case 'sexual_offences':
+						case 'robbery':
+						case 'theft_offences':
+						case 'criminal_damage_and_arson':
+							$new_top_crime = $victim_based_crime->addChild('crime');
+							$new_top_crime['id'] = $key;
+							$new_top_crime['total'] = $crime_total;
+							break;
+							
+						// All mid-level crimes.
+						case 'homicide':
+						case 'violence_with_injury':
+						case 'violence_without_injury':
+						case 'burglary':
+						case 'vehicle_offences':
+						case 'theft_from_the_person':
+						case 'bicycle_theft':
+						case 'shoplifting':
+						case 'all_other_theft_offences':
+						case 'possession_of_weapon_offences':
+						case 'public_order_offences':
+						case 'miscellaneous_crimes_against_society':
+						case 'fraud':
+							$new_crime = $new_top_crime->addChild('crime');
+							$new_crime['id'] = $key;
+							$new_crime['total'] = $crime_total;
+							break;
+							
+						// All bottom-level crimes
+						case 'domestic_burglary':
+						case 'non_domestic_burglary':
+							$new_bot_crime = $new_crime->addChild('crime');
+							$new_bot_crime['id'] = $key;
+							$new_bot_crime['total'] = $crime_total;
+							break;
+							
+						// First entry of "Other crimes..". Sets "new_top_crime" to use "other_crimes.." instead of "victim_bas.."
+						// Otherwise identical to other top-level crimes.
+						case 'drug_offences':
+							$other_crimes_against_society['id'] = $key;
+							$other_crimes_against_society['total'] = $crime_total;
+							
+							$new_top_crime = $other_crimes_against_society->addChild('crime');
+							$new_top_crime['id'] = $key;
+							$new_top_crime['total'] = $crime_total;
+							break;
+							
+						default:
+							echo "Crime type error";
+							break;
+						}
+				} // End of population foreach.
 				
 				
-				print_r($region_element);
+				//echo $new_area->asXML();
 				
 				
-				break;
+				print_r ($new_area);
+				
+				
+				
+				
+				
+				
+				
+				break; // End of XML block.
 			
 			
 		} // End of XML/JSON switch
@@ -141,20 +267,6 @@ else // If no valid region was provided.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 
 - Don't update area or region totals.
@@ -162,6 +274,8 @@ else // If no valid region was provided.
 - Find specified region
 - Create area in that region of specified name
 - Create a crime for each crime that exists in that area
+
+
 
 - Calculate the total value of specified crimes
 - Update the total value for the crimes

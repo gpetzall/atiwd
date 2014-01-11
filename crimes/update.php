@@ -73,7 +73,7 @@ $region_element = $xml->xpath("/crimes/region[@id='$regi']"); // A little bit of
 $region_element = array_shift($region_element); // Returns the simple XML element.
 // NOTE: simple XML remembers where it's from later in the code when it is used.
 
-if ($region_element instanceof SimpleXMLElement) // If a simle xml element was returned (checks if the region is valid).
+if ($region_element instanceof SimpleXMLElement) // If a simple xml element was returned (checks if the region is valid).
 {
 	if ($update != NULL)
 	{
@@ -143,7 +143,7 @@ if ($region_element instanceof SimpleXMLElement) // If a simle xml element was r
 				$xml->asXML($outputFilename);
 				
 				// Display message.
-				echo $doc->saveXML(); 
+				echo $doc->saveXML();
 				
 				break; // End of XML block.
 				

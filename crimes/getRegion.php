@@ -57,7 +57,7 @@ $xml = simplexml_load_file($inputFilename);
 $region_element = $xml->xpath("/crimes/region[@id='$regi']"); // A little bit of XPATH grabbing all elements with GET's id value.
 $region_element = array_shift($region_element); // Returns the simple xml element.
 
-if ($region_element instanceof SimpleXMLElement) // If a simle xml element was returned (checks if the region is valid).
+if ($region_element instanceof SimpleXMLElement) // If a simple xml element was returned (checks if the region is valid).
 {
 	switch ($response) // Depending on the data response request.
 	{
