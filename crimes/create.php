@@ -238,6 +238,7 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 			// Variables for the main calculation loop.
 			$total_crimes = 0;
 			$other_total = 0;
+			$this_region_total = 0;
 			foreach($xml->children() as $region) // Main calculation loop for totals.
 			{
 				$region_total = 0; // Variable for the region totals.
@@ -256,8 +257,11 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				$total_crimes += $region_total;
 				$other_regions = $region->attributes()['id'];
 				
-				switch ($other_regions) // Calculate non-English totals.
+				switch ($other_regions) // Save/calculate the current region's and non-English's totals.
 				{
+					case $regi:
+						$this_region_total = $region_total;
+						break;
 					case 'wales':
 					case 'british_transport_police':
 					case 'action_fraud':
@@ -272,8 +276,7 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 			
 			if ($response == 'xml')
 			{
-				header("Content-type: text/xml"); 
-				//header("Content-type: text/plain");
+				header("Content-type: text/xml"); // Proper encoding.
 				
 				// Create a new DOM document with pretty formatting.
 				$doc = new DomDocument();
@@ -292,14 +295,16 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				// Add the region.
 				$node = $doc->createElement('region'); // Create the region.
 				$node->setAttribute('id',ucwords(str_replace('_', ' ',$regi))); // Set name attribute. NOTE: *with* ucwords.
-				$node->setAttribute('total',$region_total); // Set the updated total number.
+				$node->setAttribute('total',$this_region_total); // Set the updated total number.
 				$region_x = $crimes->appendChild($node); // Add all of it to the response.
 				
+				// Add the area
 				$node = $doc->createElement('area'); // Create the area.
 				$node->setAttribute('id',$area); // Set name attribute. NOTE: *without* ucwords.
 				$node->setAttribute('total',$created_total); // Set total.
 				$area_x = $region_x->appendChild($node); // Add it.
 				
+				// Add the new crime recordings.
 				$recorded_counter = 1;
 				foreach ($full_crime_array as $key=>$crime_total)
 				{
@@ -313,12 +318,14 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 					$recorded_counter ++;
 				}
 				
+				// Add England
 				$node = $doc->createElement('england'); // Create england.
 				$node->setAttribute('total',($total_crimes - $other_total)); // Set total. 
 				$england = $crimes->appendChild($node); // Add it.
 				
+				// Add England and Wales
 				$node = $doc->createElement('england_wales'); // Create england_wales.
-				$node->setAttribute('total',($total_crimes)); // Set total. 
+				$node->setAttribute('total',$total_crimes); // Set total. 
 				$england = $crimes->appendChild($node); // Add it.
 				
 				// Display message.
@@ -327,21 +334,37 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				
 			} // End of XML block.
 			else
-			{ // Start of JSON block.
+			{ // Start of JSON block (can only be JSON).
 				
+				header("Content-type: application/json"); // So that my Firefox "JSONview" add-on will display it properly.
 				
+				$json = array(); // Regular array.
+				$json['response']['timestamp']=time(); // Create the first array item and its child with a name of timestamp and value of time().
+				$json['response']['crimes']['year']='6-2013'; // Create a second child of response with a child named year and value "6-2013".
 				
-			}
-			
-			
-			
-			
-			//header("Content-type: text/xml"); 
-			//header("Content-type: text/plain"); 
-			// temp!
-			// $xml2 = simplexml_load_file($inputFilename);
-			// echo $xml2->asXML();
-			
+				$json['response']['crimes']['region']['id']=ucwords(str_replace('_', ' ',$regi)); // Create a child of crimes named region. NOTE: using ucwords.
+				$json['response']['crimes']['region']['total']=$this_region_total; // Add total.
+				
+				$json['response']['crimes']['region']['area']['id']=$area; // Create area. NOTE: *not* using ucwords.
+				$json['response']['crimes']['region']['area']['total']=$created_total; // Add total.
+				
+				// Add the new crime recordings.
+				$recorded_counter = 1;
+				foreach ($full_crime_array as $key=>$crime_total)
+				{
+					if (($recorded_counter >= 2) && ($recorded_counter <= 4)) // Add "&& ($crime_total >= 1)" here to hide non-recorded crimes. Added the 0 so it matches the spec.
+					{
+						$json['response']['crimes']['region']['area']['recorded'][$recorded_counter]['id']=ucwords(str_replace('_', ' ',$key)); // Set name attribute. NOTE: *with* ucwords.
+						$json['response']['crimes']['region']['area']['recorded'][$recorded_counter]['total']=$crime_total; // Add total.
+					}
+					$recorded_counter ++;
+				}
+				
+				$json['response']['crimes']['england']['total']=($total_crimes - $other_total); // Add England total.
+				$json['response']['crimes']['england_wales']['total']=$total_crimes; // Add England & Wales total.
+				
+				echo json_encode($json); //Json!
+			} // End of JSON block.
 			
 
 			
@@ -352,42 +375,6 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 			echo 'No XML or JSON request';
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		switch ($response) // XML/JSON response request.
-		{
-			case 'xml':
-				
-				
-			
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				break; // End of XML block.
-			
-			
-		} // End of XML/JSON switch
-	
 	}
 	else // If no area was provided.
 	{

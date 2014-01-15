@@ -127,7 +127,7 @@ if ($region_element instanceof SimpleXMLElement) // If a simple xml element was 
 					$region_element['previous'] = $region_total;
 					$region_element['total'] = $update;
 				}
-				else // Yes: 
+				else // Yes: Move the old total and display the new.
 				{
 					// Display Message.
 					$node->setAttribute('previous',(int)$region_element->attributes()['total']); // Get the current total and add it as previous.
