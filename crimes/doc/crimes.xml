@@ -1187,7 +1187,7 @@
         <crime id="fraud" total="776"/>
       </other_crimes_against_society>
     </area>
-  </region>
+  <area/><area/><area id="wessex" total="19"><victim_based_crime><crime id="violence_against_the_person" total="19"><crime id="homicide" total="4"/><crime id="violence_with_injury" total="5"/><crime id="violence_without_injury" total="10"/></crime><crime id="sexual_offences" total="0"/><crime id="robbery" total="0"/><crime id="theft_offences" total="0"><crime id="burglary" total="0"><crime id="domestic_burglary" total="0"/><crime id="non_domestic_burglary" total="0"/></crime><crime id="vehicle_offences" total="0"/><crime id="theft_from_the_person" total="0"/><crime id="bicycle_theft" total="0"/><crime id="shoplifting" total="0"/><crime id="all_other_theft_offences" total="0"/></crime><crime id="criminal_damage_and_arson" total="0"/></victim_based_crime><other_crimes_against_society><crime id="drug_offences" total="0"><crime id="possession_of_weapon_offences" total="0"/><crime id="public_order_offences" total="0"/><crime id="miscellaneous_crimes_against_society" total="0"/><crime id="fraud" total="0"/></crime></other_crimes_against_society></area></region>
   <region id="wales">
     <area id="dyfed-powys">
       <victim_based_crime>

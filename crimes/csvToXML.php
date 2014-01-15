@@ -138,8 +138,9 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 					{	
 						case "area_region_other": // If Area/Region or Other, do this.
 							
-							$area->setAttribute
-								('id',strtolower
+							$area->setAttribute // Separate with indentations for easier reading.
+								(
+									'id',strtolower
 									(
 										str_replace
 										(
@@ -153,7 +154,7 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 										)
 									)
 								);
-							// Set the id attribute. Remove "1" from Action Fraud.
+							// Set the id attribute. Remove "1" from Action Fraud, replace spaces, remove commas and use nominal letters.
 
 							break;
 						
