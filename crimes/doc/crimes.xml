@@ -823,7 +823,7 @@
     </area>
   </region>
   <region id="london">
-    <area id="london,_city_of">
+    <area id="london_city_of">
       <victim_based_crime>
         <crime id="violence_against_the_person" total="534">
           <crime id="homicide" total="0"/>

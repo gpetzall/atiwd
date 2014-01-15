@@ -108,10 +108,10 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 				break;
 			}
 			
-			if (preg_match("/(Region|^WALES)$/", $row[0])) // Region block start. Makes sure any areas added gets put into a region with correct name.
+			if (preg_match('/(Region|^WALES)$/', $row[0])) // Region block start. Makes sure any areas added gets put into a region with correct name.
 			{
 				$region = $doc->createElement('region'); // Create a region for the department.
-				if($row[0] == "WALES")
+				if($row[0] == 'WALES')
 				{
 					$region_name = strtolower($row[0]); // Wales only need set to lowercase. // http://www.w3schools.com/php/func_string_strtolower.asp
 				}
@@ -138,7 +138,22 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 					{	
 						case "area_region_other": // If Area/Region or Other, do this.
 							
-							$area->setAttribute('id',strtolower(str_replace(' ', '_',(str_replace('1', '',($row[$i])))))); // Set the id attribute. Remove "1" from Action Fraud.
+							$area->setAttribute
+								('id',strtolower
+									(
+										str_replace
+										(
+											',', '',str_replace
+											(
+												' ', '_',str_replace
+												(
+													'1', '', $row[$i]
+												)
+											)
+										)
+									)
+								);
+							// Set the id attribute. Remove "1" from Action Fraud.
 
 							break;
 						

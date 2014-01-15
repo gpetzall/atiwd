@@ -27,6 +27,8 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', true);
 ini_set('auto_detect_line_endings', true);
 
+require_once (__DIR__.'/functions/xmlpp.php');
+
 
 // Validate GET information. ((Can possibly make this into a loop/function that explodes the GET array and handles each.))
 if (isset($_GET['response'])) { // XML or JSON.
@@ -115,23 +117,15 @@ $full_crime_array = array
 	'fraud'=>0,
 	);
 
-
 // Configure filename data.
 $inputFilename = 'doc/crimes.xml';
 $outputFilename	= 'doc/crimes.xml';
-
-
-header("Content-type: text/plain"); 
-
 
 // Create a simple xml object.
 $xml = simplexml_load_file($inputFilename);
 
 
-
-
 // Check if Wessex already exist!
-
 
 
 $region_element = $xml->xpath("/crimes/region[@id='$regi']"); // Finding the region.
@@ -147,39 +141,34 @@ if ($region_element instanceof SimpleXMLElement) // If a simple xml element was 
 		{
 			case 'xml':
 				
+				//header("Content-type: text/xml"); 
+				//header("Content-type: text/plain"); 
+				
 				// Add the specified area.
 				$new_area = $region_element->addChild('area'); 
 				$new_area['id'] = $area;
-				$new_area['total'] = $homicide+$violence_with_injury+$violence_without_injury;
+				$new_area['total'] = (int) $homicide+$violence_with_injury+$violence_without_injury;
 				
 				// Add crime category so it's available for the foreach loop.
-				$new_area->addChild('victim_based_crime');
-				$victim_based_crime = $new_area->victim_based_crime->addChild('crime');
+				$victim_based_crime = $new_area->addChild('victim_based_crime');
 				
 				// Add crime category so it's available for the foreach loop.
-				$new_area->addChild('other_crimes_against_society');
-				$other_crimes_against_society = $new_area->other_crimes_against_society->addChild('crime');
+				$other_crimes_against_society = $new_area->addChild('other_crimes_against_society');
 				
 				// Add crime variables so they are available for the foreach loop.
 				$new_top_crime;
 				$new_crime;
 				
 				// Populate the full area (simple XML saves it to the main object automatically).
+				// The loop first creates a top level crime and any lower level crimes automatically
+				// attach themselves to the last higher level crime. This loop could easily be extended
+				// to be actually used to update ANY crime or to add more crimes in the code.
 				foreach ($full_crime_array as $key=>$crime_total)
 				{
 					switch ($key)
 						{
-						// The first entry also sets "victim_bas...". Otherwise identical to other top level crimes.
-						case 'violence_against_the_person':
-							$victim_based_crime['id'] = $key;
-							$victim_based_crime['total'] = $crime_total;
-							
-							$new_top_crime = $victim_based_crime->addChild('crime');
-							$new_top_crime['id'] = $key;
-							$new_top_crime['total'] = $crime_total;
-							break;
-						
 						// All top-level crimes
+						case 'violence_against_the_person':
 						case 'sexual_offences':
 						case 'robbery':
 						case 'theft_offences':
@@ -215,29 +204,70 @@ if ($region_element instanceof SimpleXMLElement) // If a simple xml element was 
 							$new_bot_crime['id'] = $key;
 							$new_bot_crime['total'] = $crime_total;
 							break;
-							
+						
 						// First entry of "Other crimes..". Sets "new_top_crime" to use "other_crimes.." instead of "victim_bas.."
 						// Otherwise identical to other top-level crimes.
 						case 'drug_offences':
-							$other_crimes_against_society['id'] = $key;
-							$other_crimes_against_society['total'] = $crime_total;
-							
 							$new_top_crime = $other_crimes_against_society->addChild('crime');
 							$new_top_crime['id'] = $key;
 							$new_top_crime['total'] = $crime_total;
 							break;
 							
 						default:
-							echo "Crime type error";
+							echo "Crime type error: No valid type entered.";
 							break;
 						}
 				} // End of population foreach.
 				
+				header("Content-type: text/xml"); 
+				//header("Content-type: text/plain"); 
+				
+				
+				echo $new_area->asXML();
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				// $xml->asXML($outputFilename);
+				
+				// $xml2 = simplexml_load_file($inputFilename);
+				
+				// echo $xml2->asXML();
+				
+				//SimpleXMLElement($xmlString);
+				
+				// $new_area2 = xmlpp($new_area->asXML());
+				
+				// $new_area3 = new SimpleXMLElement($new_area2);
+				
+				// echo $xml;
 				
 				//echo $new_area->asXML();
+				//print_r ($new_area);
+				//
+				//$xml = simplexml_load_file($inputFilename);
 				
+				//$new_area_print = xmlpp($xml->asXML());
+				//$new_area_print = $xml->asXML();
 				
-				print_r ($new_area);
+				//echo $new_area_print;
+				
+				//$new_area_print->asXML($outputFilename);
+				
+				//var_dump($new_area);
+				//echo "<br><br><br>";
+				//echo "\n \n \n";
+				//var_dump($region_element);
+				//echo "<br><br><br>";
+				//echo "\n \n \n";
+				//var_dump($xml);
+				
+				//echo 
 				
 				
 				
@@ -283,6 +313,7 @@ else // If no valid region was provided.
 
 - Calculate the total crimes of each region in one variable
 - Remember the Wales total separately
+
 - Add the full total (minus wales) to DOM
 - Add the wales total to DOM
 
