@@ -95,10 +95,11 @@ if (isset($_GET['vwoi'])) {
 	$violence_without_injury = 0;
 }
 
+$created_total = $homicide+$violence_with_injury+$violence_without_injury;
 
 $full_crime_array = array
 	(
-	'violence_against_the_person'=>$homicide+$violence_with_injury+$violence_without_injury,
+	'violence_against_the_person'=>$created_total,
 	'homicide'=>$homicide,
 	'violence_with_injury'=>$violence_with_injury,
 	'violence_without_injury'=>$violence_without_injury,
@@ -136,7 +137,6 @@ $region_element = $xml->xpath("/*/region[@id='$regi']"); // Finding the region.
 
 if (!empty($region_element)) // If the return was not empty (checks if the region is valid).
 {
-	
 	$region_element = array_shift($region_element);// Returns the simple XML element.
 	
 	if ($area != NULL) // If an area was provided.
@@ -155,13 +155,10 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				unset($area_element[0], $area_element);
 			}
 			
-			//header("Content-type: text/xml"); 
-			//header("Content-type: text/plain");
-			
 			// Add the specified area.
 			$new_area = $region_element->addChild('area');
 			$new_area['id'] = $area;
-			$new_area['total'] = (int) $homicide+$violence_with_injury+$violence_without_injury;
+			$new_area['total'] = (int) $created_total;
 			
 			// Add crime category so it's available for the foreach loop.
 			$victim_based_crime = $new_area->addChild('victim_based_crime');
@@ -233,33 +230,120 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 					}
 			} // End of population foreach.
 			
-			//header("Content-type: text/xml"); 
-			//header("Content-type: text/plain"); 
-			
-			
-			
 			// The simple XML object retains changes made to child elements.
 			// The drawback is that it doesn't format it prettily with indentations, but it works!
 			$xml->asXML($outputFilename);
 			
 			
+			// Variables for the main calculation loop.
+			$total_crimes = 0;
+			$other_total = 0;
+			foreach($xml->children() as $region) // Main calculation loop for totals.
+			{
+				$region_total = 0; // Variable for the region totals.
+				
+				foreach($region->children() as $area_f) // Continue down the rabbit hole...
+				{
+					foreach($area_f->children() as $crime_type) // Continue down the rabbit hole...
+					{
+						foreach($crime_type->children() as $crime_top) // Continue down the rabbit hole...
+						{
+							$region_total += $crime_top->attributes()['total']; // Add up all the crime totals.
+						} // End crime_top foreach (national).
+					} // End crime_type foreach (national).
+				} // End area foreach (national).
+				
+				$total_crimes += $region_total;
+				$other_regions = $region->attributes()['id'];
+				
+				switch ($other_regions) // Calculate non-English totals.
+				{
+					case 'wales':
+					case 'british_transport_police':
+					case 'action_fraud':
+						$other_total += $region_total;
+						break;
+					default:
+						break;
+				} // End of non-English loop.
+			} // End of main calculation loop.
 			
+			
+			
+			if ($response == 'xml')
+			{
+				header("Content-type: text/xml"); 
+				//header("Content-type: text/plain");
+				
+				// Create a new DOM document with pretty formatting.
+				$doc = new DomDocument();
+				$doc->formatOutput = true;
+				
+				// Add a root node to the document called response.
+				$node = $doc->createElement('response');
+				$node->setAttribute('timestamp',time()); // Add 'nix timestamp.
+				$root = $doc->appendChild($node); // Add it to the DOM.
+				
+				// Add crimes.
+				$node = $doc->createElement('crimes');
+				$node->setAttribute('year',"6-2013"); // Set year attribute.
+				$crimes = $root->appendChild($node); // Add it to the response.
+				
+				// Add the region.
+				$node = $doc->createElement('region'); // Create the region.
+				$node->setAttribute('id',ucwords(str_replace('_', ' ',$regi))); // Set name attribute. NOTE: *with* ucwords.
+				$node->setAttribute('total',$region_total); // Set the updated total number.
+				$region_x = $crimes->appendChild($node); // Add all of it to the response.
+				
+				$node = $doc->createElement('area'); // Create the area.
+				$node->setAttribute('id',$area); // Set name attribute. NOTE: *without* ucwords.
+				$node->setAttribute('total',$created_total); // Set total.
+				$area_x = $region_x->appendChild($node); // Add it.
+				
+				$recorded_counter = 1;
+				foreach ($full_crime_array as $key=>$crime_total)
+				{
+					if (($recorded_counter >= 2) && ($recorded_counter <= 4)) // Add "&& ($crime_total >= 1)" here to hide non-recorded crimes. Added the 0 so it matches the spec.
+					{
+						$node = $doc->createElement('recorded'); // Create the recorded item.
+						$node->setAttribute('id',ucwords(str_replace('_', ' ',$key))); // Set name attribute. NOTE: *with* ucwords.
+						$node->setAttribute('total',$crime_total); // Set name attribute. NOTE: *with* ucwords.
+						$recorded = $area_x->appendChild($node); // Add it.
+					}
+					$recorded_counter ++;
+				}
+				
+				$node = $doc->createElement('england'); // Create england.
+				$node->setAttribute('total',($total_crimes - $other_total)); // Set total. 
+				$england = $crimes->appendChild($node); // Add it.
+				
+				$node = $doc->createElement('england_wales'); // Create england_wales.
+				$node->setAttribute('total',($total_crimes)); // Set total. 
+				$england = $crimes->appendChild($node); // Add it.
+				
+				// Display message.
+				echo $doc->saveXML();
+				
+				
+			} // End of XML block.
+			else
+			{ // Start of JSON block.
+				
+				
+				
+			}
+			
+			
+			
+			
+			//header("Content-type: text/xml"); 
+			//header("Content-type: text/plain"); 
 			// temp!
-			$xml2 = simplexml_load_file($inputFilename);
-			echo $xml2->asXML();
+			// $xml2 = simplexml_load_file($inputFilename);
+			// echo $xml2->asXML();
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 			
 			
 		} // Is there xml or json?
