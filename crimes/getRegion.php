@@ -83,27 +83,32 @@ if ($region_element instanceof SimpleXMLElement) // If a simple xml element was 
 			$node->setAttribute('id',ucwords(str_replace('_', ' ',$regi))); // Set name attribute.
 			$region = $crimes->appendChild($node); // Add it to the response.
 			
+			$region_counter = 0; // To add up area totals.
+			
 			foreach ($region_element->children() as $area)
 			{
 				$node = $doc->createElement('area');
 				$node->setAttribute('id',ucwords(str_replace('_', ' ', (string) $area->attributes()['id'])));
 				// Simple XML element with id attribute to string, change characters and add.
 				
-				$total_counter = 0; // Variable for the region totals.
+				$area_counter = 0; // Variable for the region totals.
 				
 				foreach($area->children() as $crime_type) // Continue down the rabbit hole...
 				{
 					foreach($crime_type->children() as $crime_top) // Continue down the rabbit hole...
 					{
-						$total_counter += $crime_top->attributes()['total']; // Add up all the crime totals.
+						$area_counter += $crime_top->attributes()['total']; // Add up all the crime totals.
 					} // End crime_top foreach.
 				} // End crime_type foreach.
 				
-				$node->setAttribute('total',$total_counter); // Simple XML element.
-					
+				$node->setAttribute('total',$area_counter); // Simple XML element.
 				$region->appendChild($node); // Add it all to the DOM.
 				
+				$region_counter += $area_counter; // Add up areas' totals for the region.
+				
 			} // End XML foreach.
+			
+			$region->setAttribute('total',$region_counter);
 			
 			echo $doc->saveXML();
 			
