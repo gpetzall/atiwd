@@ -272,9 +272,7 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				} // End of non-English loop.
 			} // End of main calculation loop.
 			
-			
-			
-			if ($response == 'xml')
+			if ($response == 'xml') // Start of XML block.
 			{
 				header("Content-type: text/xml"); // Proper encoding.
 				
@@ -365,69 +363,20 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				
 				echo json_encode($json); //Json!
 			} // End of JSON block.
-			
-
-			
-			
 		} // Is there xml or json?
 		else // If no xml/json was specified.
 		{
 			echo 'No XML or JSON request';
 		}
-		
 	}
 	else // If no area was provided.
 	{
 		echo "YES - Region \nNO - Area \n";
 	} // End of area if
-	
 }
 else // If no valid region was provided.
 {
 	echo "NO - Region \n";
 } // End of region if.
-
-
-
-
-
-
-/*
-
-- Don't update area or region totals.
-
-- Find specified region
-- Create area in that region of specified name
-- Create a crime for each crime that exists in that area
-
-
-
-- Calculate the total value of specified crimes
-- Update the total value for the crimes
-- Add the combined value to violence_against_the_person
-
-- Calculate the total crimes of each region in one variable
-- Remember the Wales total separately
-
-- Add the full total (minus wales) to DOM
-- Add the wales total to DOM
-
-- Display message.
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
