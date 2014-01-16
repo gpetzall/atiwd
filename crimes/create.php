@@ -130,9 +130,6 @@ $outputFilename	= 'doc/crimes.xml';
 $xml = simplexml_load_file($inputFilename);
 
 
-// Check if Wessex already exist!
-
-
 $region_element = $xml->xpath("/*/region[@id='$regi']"); // Finding the region.
 
 if (!empty($region_element)) // If the return was not empty (checks if the region is valid).
@@ -243,7 +240,7 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 			{
 				$region_total = 0; // Variable for the region totals.
 				
-				foreach($region->children() as $area_f) // Continue down the rabbit hole...
+				foreach($region->children() as $area_f) // Continue down the rabbit hole... (area foreach)
 				{
 					foreach($area_f->children() as $crime_type) // Continue down the rabbit hole...
 					{
@@ -255,7 +252,7 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				} // End area foreach (national).
 				
 				$total_crimes += $region_total;
-				$other_regions = $region->attributes()['id'];
+				$other_regions = $region->attributes()['id']; // Other regions than the total count.
 				
 				switch ($other_regions) // Save/calculate the current region's and non-English's totals.
 				{
@@ -270,7 +267,7 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 					default:
 						break;
 				} // End of non-English loop.
-			} // End of main calculation loop.
+			} // End of main calculation loop of each region.
 			
 			if ($response == 'xml') // Start of XML block.
 			{
@@ -300,7 +297,7 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				$node = $doc->createElement('area'); // Create the area.
 				$node->setAttribute('id',$area); // Set name attribute. NOTE: *without* ucwords.
 				$node->setAttribute('total',$created_total); // Set total.
-				$area_x = $region_x->appendChild($node); // Add it.
+				$area_x = $region_x->appendChild($node); // Add it (AREA for Xml message).
 				
 				// Add the new crime recordings.
 				$recorded_counter = 1;
