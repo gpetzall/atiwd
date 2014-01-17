@@ -640,7 +640,7 @@
       </other_crimes_against_society>
     </area>
   </region>
-  <region id="east_of_england" previous="309296" total="2557788">
+  <region id="east_of_england">
     <area id="bedfordshire">
       <victim_based_crime>
         <crime id="violence_against_the_person" total="5977">

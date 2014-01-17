@@ -53,12 +53,15 @@ if (isset($_GET['response'])) { // XML or JSON.
 	$response = NULL;
 }
 
+$regi_not = FALSE;
 if (isset($_GET['regi'])) { // Region name.
 	$regi = $_GET['regi'];
 	$region_element = $xml->xpath("//region[@id='$regi']");
 	if (empty($region_element)) // If it doesn't exist.
 	{
 		$regi = NULL; // Not a valid region.
+		$regi_not = TRUE;
+		echo 'Region does not exist.';
 	}
 } else {
 	$regi = NULL;
@@ -95,45 +98,40 @@ $full_crime_array = array
 	'fraud'=>0,
 	);
 
-
-
 // Different $area_element depending on if region was provided.
 if ($regi != NULL)
 {
-	$area_element = $xml->xpath("//region[@id='$regi']/area[@id='$area']");// Checking if there is an area with the specified name in the specified region.
+	$area_element = $xml->xpath("/*/region[@id='$regi']/area[@id='$area']");// Checking if there is an area with the specified name in the specified region.
 }
 else
 {
-	$area_element = $xml->xpath("//area[@id='$area']");// Checking if there is an area with the specified name (regardless of region).
+	$area_element = $xml->xpath("/*/region/area[@id='$area']");// Checking if there is an area with the specified name (regardless of region).
 }
 
 // If the return was not empty (checks if the area is valid). Starts main if.
-if (!empty($area_element)) 
+if (!empty($area_element) && $regi_not == FALSE) 
 {
-	$area_element = array_shift($area_element);// Returns the *first* simple XML element.
+	$area_element = array_shift($area_element); // Returns the *first* simple XML element.
 	
 	if (($response == 'xml') || ($response == 'json')) // Start of XML/JSON.
 	{
-		
 		// Adding values to each crime of the specified area.
 		foreach ($full_crime_array as $key=>$value)
 		{
 			$crime_f;
 			
-			if ($regi != NULL)
+			if ($regi != NULL) // If (existing) region was provided.
 			{
 				$crime_f = $xml->xpath("//region[@id='$regi']/area[@id='$area']//crime[@id='$key']");
 			}
-			else
+			else // If region was not provided.
 			{
 				$crime_f = $xml->xpath("//region/area[@id='$area']//crime[@id='$key']");
 			}
+			
 			$crime_f = array_shift($crime_f); // Returns the *first* simple XML element.
 			$full_crime_array[$key] = (int) $crime_f['total'];
 		}
-		
-		
-		
 		
 		// Variables for the main calculation loop.
 		$total_crimes = 0;
@@ -278,48 +276,27 @@ if (!empty($area_element))
 			$json['response']['crimes']['england']['total']=($total_crimes - $other_total); // Add England total.
 			$json['response']['crimes']['england_wales']['total']=$total_crimes; // Add England & Wales total.
 			
-			
 			// Display message.
 			//header("Content-type: text/plain");
 			header("Content-type: application/json"); // So that my Firefox "JSONview" add-on will display it properly.
 			echo json_encode($json);
 			
-			
 		} // End of JSON block.
 		
-		
-		
-		
 		// Delete the specified area.
-		// unset($area_element[0],$area_element);
-
+		unset($area_element[0],$area_element);
+		$xml->asXML($outputFilename);
 		
+		//unset($xml–>crimes->region->area($area)); // this would remove node c
+		
+		//print_r($area_element);
 		
 	} // End if XML/JSON.
-	
-
-/*
- 
- - Move the crime totals into the full crime array
- - Delete the entry
- - display all crimes where the total is not 0.
- - Specify with region. (a small if in the start of how to determine area?)
- - Make sure it's IN the db.
- 
- - Add all crimes to the message
- - calculate england and england_wales totals
- - display message
- 
-*/
-
-
-
-
 
 } // End of if the area exists.
 else // If the area doesn't exist.
 {
-	echo 'No such area in the database.';
+	echo 'No such area in the database (or missing in the specified region).';
 	
 }
 

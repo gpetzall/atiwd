@@ -144,7 +144,6 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 			
 			// Checking if there already is an area with the specified name in the specified region.
 			$area_element = $xml->xpath("/*/region[@id='$regi']/area[@id='$area']"); 
-			$area_element_exist = FALSE;
 			
 			if (!empty($area_element)) // Is there already an area with specified name?
 			{
