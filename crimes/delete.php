@@ -31,16 +31,8 @@
  * 
 */
 
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', true);
-ini_set('auto_detect_line_endings', true);
-
-// require_once (__DIR__.'/functions/xmlpp.php');
-
-
-// Configure filename data.
-$inputFilename = 'doc/crimes.xml';
-$outputFilename	= 'doc/crimes.xml';
+// Run configuration.
+require_once ('/includes/config.php');
 
 // Create a simple xml object.
 $xml = simplexml_load_file($inputFilename);
@@ -163,13 +155,13 @@ if (!empty($area_element) && $regi_correct == TRUE)
 				
 			} // End area foreach (national).
 			
-			$total_crimes += $region_total; // SOMETHING WRONG HERE!!!
+			$total_crimes += $region_total;
 			$other_regions = $region->attributes()['id']; // Other regions than the total count.
 			
 			switch ($other_regions) // Save/calculate the current region's and non-English's totals.
 			{
 				case $regi:
-					$this_region_total = $region_total;
+					$this_region_total = $region_total; // Adds it in case it's needed.
 					break;
 				case 'wales':
 				case 'british_transport_police':
@@ -202,7 +194,7 @@ if (!empty($area_element) && $regi_correct == TRUE)
 				// Add the region
 				$node = $doc->createElement('region'); // Create the region.
 				$node->setAttribute('id',$regi); // Set name attribute. NOTE: *without* ucwords.
-				$node->setAttribute('deleted',$this_region_total); // Set total deleted.
+				// $node->setAttribute('deleted',$this_region_total); // Set total for region; if ever needed.
 				$region_x = $crimes->appendChild($node); // Add it (REGION for Xml message).
 				
 				// Add the area
@@ -210,7 +202,6 @@ if (!empty($area_element) && $regi_correct == TRUE)
 				$node->setAttribute('id',$area); // Set name attribute. NOTE: *without* ucwords.
 				$node->setAttribute('deleted',$this_area_total); // Set total deleted.
 				$area_x = $region_x->appendChild($node); // Add it (AREA for Xml message).
-				
 			}
 			else
 			{
@@ -220,11 +211,6 @@ if (!empty($area_element) && $regi_correct == TRUE)
 				$node->setAttribute('deleted',$this_area_total); // Set total deleted.
 				$area_x = $crimes->appendChild($node); // Add it (AREA for Xml message).
 			}
-			
-			
-			
-			
-			// An if here to whether the area is added to crimes or region.
 			
 			// Add any crimes as deleted if they have more than one crime total.
 			foreach ($full_crime_array as $key=>$value)
@@ -265,17 +251,26 @@ if (!empty($area_element) && $regi_correct == TRUE)
 			$json['response']['timestamp']=time(); // Create the first array item and its child with a name of timestamp and value of time().
 			$json['response']['crimes']['year']='6-2013'; // Create a second child of response with a child named year and value "6-2013".
 			
-			// $json['response']['crimes']['region']['id']=ucwords(str_replace('_', ' ',$regi)); // Create a child of crimes named region. NOTE: using ucwords.
-			// $json['response']['crimes']['region']['total']=$this_region_total; // Add total.
+			if ($regi != NULL)
+			{
+				// Add the region
+				$json['response']['crimes']['region']['id']=str_replace('_', ' ',$regi); // Create a child of crimes named region. NOTE: *without* ucwords.
+				// $json['response']['crimes']['region']['total']=$this_region_total; // Add total if ever needed.
 			
-			$json['response']['crimes']['region']['area']['id']=$area; // Create area. NOTE: *not* using ucwords.
-			$json['response']['crimes']['region']['area']['total']=$this_area_total; // Add total.
+				// Add the area
+				$json['response']['crimes']['region']['area']['region']['id']=$area; // Create area. NOTE: *not* using ucwords.
+				$json['response']['crimes']['region']['area']['region']['total']=$this_area_total; // Add total.
+			}
+			else
+			{
+				// Add the area
+				$json['response']['crimes']['region']['area']['id']=$area; // Create area. NOTE: *not* using ucwords.
+				$json['response']['crimes']['region']['area']['total']=$this_area_total; // Add total.
+				
+			}
 			
 			// Add any crimes as deleted if they have more than one crime total.
 			$recorded_counter = 1;
-			
-			//print_r($full_crime_array);
-			
 			foreach ($full_crime_array as $key=>$value)
 			{
 				if ( // 1 or more AND not one of these:
@@ -295,7 +290,6 @@ if (!empty($area_element) && $regi_correct == TRUE)
 			$json['response']['crimes']['england_wales']['total']=$total_crimes; // Add England & Wales total.
 			
 			// Display message.
-			//header("Content-type: text/plain");
 			header("Content-type: application/json"); // So that my Firefox "JSONview" add-on will display it properly.
 			echo json_encode($json);
 			
@@ -304,58 +298,11 @@ if (!empty($area_element) && $regi_correct == TRUE)
 		// Delete the specified area.
 		unset($area_element[0],$area_element);
 		$xml->asXML($outputFilename);
-		
-		//unset($xml–>crimes->region->area($area)); // this would remove node c
-		
-		//print_r($area_element);
-		
 	} // End if XML/JSON.
 
 } // End of if the area exists.
 else // If the area doesn't exist.
 {
 	echo 'No such area in the database (or missing in the specified region).';
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

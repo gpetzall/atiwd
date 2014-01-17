@@ -27,11 +27,8 @@
  * 
 */
 
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', true);
-ini_set('auto_detect_line_endings', true);
-
-// require_once (__DIR__.'/functions/xmlpp.php');
+// Run configuration.
+require_once ('/includes/config.php');
 
 
 // Validate GET information. ((Can possibly make this into a loop/function that explodes the GET array and handles each.))
@@ -121,10 +118,6 @@ $full_crime_array = array
 	'miscellaneous_crimes_against_society'=>0,
 	'fraud'=>0,
 	);
-
-// Configure filename data.
-$inputFilename = 'doc/crimes.xml';
-$outputFilename	= 'doc/crimes.xml';
 
 // Create a simple xml object.
 $xml = simplexml_load_file($inputFilename);
@@ -305,8 +298,8 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 					if (($recorded_counter >= 2) && ($recorded_counter <= 4)) // Add "&& ($crime_total >= 1)" here to hide non-recorded crimes. Added the 0 so it matches the spec.
 					{
 						$node = $doc->createElement('recorded'); // Create the recorded item.
-						$node->setAttribute('id',ucwords(str_replace('_', ' ',$key))); // Set name attribute. NOTE: *with* ucwords.
-						$node->setAttribute('total',$crime_total); // Set name attribute. NOTE: *with* ucwords.
+						$node->setAttribute('id',ucfirst(str_replace('_', ' ',$key))); // Set name attribute. NOTE: *with* ucfirst.
+						$node->setAttribute('total',$crime_total); // Set name attribute.
 						$recorded = $area_x->appendChild($node); // Add it.
 					}
 					$recorded_counter ++;
@@ -345,7 +338,7 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				{
 					if (($recorded_counter >= 2) && ($recorded_counter <= 4)) // Add "&& ($crime_total >= 1)" here to hide non-recorded crimes. Added the 0 so it matches the spec.
 					{
-						$json['response']['crimes']['region']['area']['recorded'][$recorded_counter]['id']=ucwords(str_replace('_', ' ',$key)); // Set name attribute. NOTE: *with* ucwords.
+						$json['response']['crimes']['region']['area']['recorded'][$recorded_counter]['id']=ucfirst(str_replace('_', ' ',$key)); // Set name attribute. NOTE: *with* ucfirst.
 						$json['response']['crimes']['region']['area']['recorded'][$recorded_counter]['total']=$crime_total; // Add total.
 					}
 					$recorded_counter ++;

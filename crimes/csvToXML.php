@@ -2,7 +2,7 @@
 /*
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2013-12-16
- * Modified: 2014-01-10
+ * Modified: 2014-01-17
  *
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -35,14 +35,11 @@
  * [Accessed on 2014-01-07]
 */
 
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', true);
-ini_set('auto_detect_line_endings', true);
+// Run configuration.
+require_once ('/includes/config.php');
 
-// Configure filename data.
-$inputFilename	= 'doc/input.csv'; 
-$outputFilename	= 'doc/crimes.xml'; // To make an XML file as a database for the other parts of the assignment.
-$backupFilename	= 'doc/backup.xml'; // To make a static backup that can be used to restore the XML database.
+// Change input file from standard in config.
+$inputFilename = 'doc/input.csv';
 
 // Open CSV to read.
 $inputFile = fopen($inputFilename, 'rt');
@@ -56,7 +53,7 @@ $node = $doc->createElement('crimes');
 $root = $doc->appendChild($node);
 
 
-// Predefining headers and instructions for reading the filelater on.
+// Predefining headers and instructions for reading the file later on.
 $headers = array("area_region_other","total1","total2","","violence_against_the_person","homicide","violence_with_injury",
 	"violence_without_injury","sexual_offences","robbery","theft_offences","burglary","domestic_burglary","non_domestic_burglary",
 	"vehicle_offences","theft_from_the_person","bicycle_theft","shoplifting","all_other_theft_offences","criminal_damage_and_arson",

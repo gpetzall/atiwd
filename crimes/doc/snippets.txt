@@ -37,3 +37,7 @@ foreach ($regions as $region)
 	$node->setAttribute('id',$region->getAttribute('id'));
 	$crimes->appendChild($node);
 }
+
+
+
+// require_once (__DIR__.'/functions/xmlpp.php');

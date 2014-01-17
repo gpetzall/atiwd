@@ -2,7 +2,7 @@
 /*
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-08
- * Modified: 2014-01-10
+ * Modified: 2014-01-17
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -30,11 +30,9 @@
  * 
 */
 
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', true);
-ini_set('auto_detect_line_endings', true);
+// Run configuration.
+require_once ('/includes/config.php');
 
-// header("Content-type: text/plain"); // Easier to read.
 
 // Validate GET information.
 if (isset($_GET['response'])) { // XML or JSON.
@@ -48,9 +46,6 @@ if (isset($_GET['regi'])) { // Region name.
 } else {
 	$regi = NULL;
 }
-
-// Configure filename data.
-$inputFilename = 'doc/crimes.xml'; 
 
 // Create a simple xml object for easy reading.
 $xml = simplexml_load_file($inputFilename);
