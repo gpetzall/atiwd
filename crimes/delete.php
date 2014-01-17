@@ -2,7 +2,7 @@
 /*
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-15
- * Modified: 2014-01-16
+ * Modified: 2014-01-17
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -25,9 +25,9 @@
  * 
  * Pages used as help to make this code:
  * 
- * headline:
- * 
- * [Accessed 2014-01-16]
+ * Another way to delete: (Wasn't used in the end)
+ * http://www.kavoir.com/2008/12/how-to-delete-remove-nodes-in-simplexml.html
+ * [Accessed 2014-01-17]
  * 
 */
 
@@ -53,14 +53,14 @@ if (isset($_GET['response'])) { // XML or JSON.
 	$response = NULL;
 }
 
-$regi_not = FALSE;
+$regi_correct = TRUE;
 if (isset($_GET['regi'])) { // Region name.
 	$regi = $_GET['regi'];
 	$region_element = $xml->xpath("//region[@id='$regi']");
 	if (empty($region_element)) // If it doesn't exist.
 	{
 		$regi = NULL; // Not a valid region.
-		$regi_not = TRUE;
+		$regi_correct = FALSE;
 		echo 'Region does not exist.';
 	}
 } else {
@@ -109,7 +109,7 @@ else
 }
 
 // If the return was not empty (checks if the area is valid). Starts main if.
-if (!empty($area_element) && $regi_not == FALSE) 
+if (!empty($area_element) && $regi_correct == TRUE)
 {
 	$area_element = array_shift($area_element); // Returns the *first* simple XML element.
 	
@@ -163,7 +163,7 @@ if (!empty($area_element) && $regi_not == FALSE)
 				
 			} // End area foreach (national).
 			
-			$total_crimes += $region_total;
+			$total_crimes += $region_total; // SOMETHING WRONG HERE!!!
 			$other_regions = $region->attributes()['id']; // Other regions than the total count.
 			
 			switch ($other_regions) // Save/calculate the current region's and non-English's totals.
@@ -181,7 +181,6 @@ if (!empty($area_element) && $regi_not == FALSE)
 			} // End of non-English loop.
 		} // End of main calculation loop of each region.
 		
-		
 		if ($response == 'xml') // Start of XML block.
 		{
 			// Create a new DOM document with pretty formatting.
@@ -198,20 +197,39 @@ if (!empty($area_element) && $regi_not == FALSE)
 			$node->setAttribute('year',"6-2013"); // Set year attribute.
 			$crimes = $root->appendChild($node); // Add it to the response.
 			
-			// An if here to add region, if specified.
+			if ($regi != NULL)
+			{
+				// Add the region
+				$node = $doc->createElement('region'); // Create the region.
+				$node->setAttribute('id',$regi); // Set name attribute. NOTE: *without* ucwords.
+				$node->setAttribute('deleted',$this_region_total); // Set total deleted.
+				$region_x = $crimes->appendChild($node); // Add it (REGION for Xml message).
+				
+				// Add the area
+				$node = $doc->createElement('area'); // Create the area.
+				$node->setAttribute('id',$area); // Set name attribute. NOTE: *without* ucwords.
+				$node->setAttribute('deleted',$this_area_total); // Set total deleted.
+				$area_x = $region_x->appendChild($node); // Add it (AREA for Xml message).
+				
+			}
+			else
+			{
+				// Add the area
+				$node = $doc->createElement('area'); // Create the area.
+				$node->setAttribute('id',$area); // Set name attribute. NOTE: *without* ucwords.
+				$node->setAttribute('deleted',$this_area_total); // Set total deleted.
+				$area_x = $crimes->appendChild($node); // Add it (AREA for Xml message).
+			}
 			
-			// Add the area
-			$node = $doc->createElement('area'); // Create the area.
-			$node->setAttribute('id',$area); // Set name attribute. NOTE: *without* ucwords.
-			$node->setAttribute('deleted',$this_area_total); // Set total deleted.
-			$area_x = $crimes->appendChild($node); // Add it (AREA for Xml message).
+			
+			
 			
 			// An if here to whether the area is added to crimes or region.
 			
 			// Add any crimes as deleted if they have more than one crime total.
 			foreach ($full_crime_array as $key=>$value)
 			{
-				if (
+				if ( // 1 or more AND not one of these:
 					$value >=1 &&
 					$key != 'violence_against_the_person' &&
 					$key != 'theft_offences' &&
@@ -260,7 +278,7 @@ if (!empty($area_element) && $regi_not == FALSE)
 			
 			foreach ($full_crime_array as $key=>$value)
 			{
-				if (
+				if ( // 1 or more AND not one of these:
 					$value >=1 &&
 					$key != 'violence_against_the_person' &&
 					$key != 'theft_offences' &&
