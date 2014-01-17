@@ -24,6 +24,9 @@
  * http://stackoverflow.com/questions/12145639/find-element-with-attribute-simplexml-xpath
  * [Accessed on 2014-01-08] 
  * 
+ * Converting array to simple XML (and only returning the first!):
+ * http://uk1.php.net/array_shift
+ * [Accessed on 2014-01-08]
  * 
 */
 

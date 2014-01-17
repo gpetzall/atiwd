@@ -330,9 +330,6 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 			} // End of XML block.
 			else
 			{ // Start of JSON block (can only be JSON).
-				
-				header("Content-type: application/json"); // So that my Firefox "JSONview" add-on will display it properly.
-				
 				$json = array(); // Regular array.
 				$json['response']['timestamp']=time(); // Create the first array item and its child with a name of timestamp and value of time().
 				$json['response']['crimes']['year']='6-2013'; // Create a second child of response with a child named year and value "6-2013".
@@ -358,7 +355,9 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 				$json['response']['crimes']['england']['total']=($total_crimes - $other_total); // Add England total.
 				$json['response']['crimes']['england_wales']['total']=$total_crimes; // Add England & Wales total.
 				
-				echo json_encode($json); //Json!
+				// Display message.
+				header("Content-type: application/json"); // So that my Firefox "JSONview" add-on will display it properly.
+				echo json_encode($json);
 			} // End of JSON block.
 		} // Is there xml or json?
 		else // If no xml/json was specified.

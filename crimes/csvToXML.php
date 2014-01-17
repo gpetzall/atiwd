@@ -139,17 +139,12 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 						case "area_region_other": // If Area/Region or Other, do this.
 							
 							$area->setAttribute // Separate with indentations for easier reading.
-								(
-									'id',strtolower
-									(
-										str_replace
-										(
-											',', '',str_replace
-											(
-												' ', '_',str_replace
-												(
-													'1', '', $row[$i]
-												)
+								('id',
+									strtolower(str_replace
+										(',', '',
+											str_replace
+											(' ', '_',
+												str_replace('1', '', $row[$i])
 											)
 										)
 									)

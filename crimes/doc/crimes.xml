@@ -640,7 +640,7 @@
       </other_crimes_against_society>
     </area>
   </region>
-  <region id="east_of_england">
+  <region id="east_of_england" previous="309296" total="2557788">
     <area id="bedfordshire">
       <victim_based_crime>
         <crime id="violence_against_the_person" total="5977">
@@ -1035,7 +1035,7 @@
         <crime id="fraud" total="4235"/>
       </other_crimes_against_society>
     </area>
-  <area id="wessex" total="44"><victim_based_crime><crime id="violence_against_the_person" total="44"><crime id="homicide" total="4"/><crime id="violence_with_injury" total="15"/><crime id="violence_without_injury" total="25"/></crime><crime id="sexual_offences" total="0"/><crime id="robbery" total="0"/><crime id="theft_offences" total="0"><crime id="burglary" total="0"><crime id="domestic_burglary" total="0"/><crime id="non_domestic_burglary" total="0"/></crime><crime id="vehicle_offences" total="0"/><crime id="theft_from_the_person" total="0"/><crime id="bicycle_theft" total="0"/><crime id="shoplifting" total="0"/><crime id="all_other_theft_offences" total="0"/></crime><crime id="criminal_damage_and_arson" total="0"/></victim_based_crime><other_crimes_against_society><crime id="drug_offences" total="0"><crime id="possession_of_weapon_offences" total="0"/><crime id="public_order_offences" total="0"/><crime id="miscellaneous_crimes_against_society" total="0"/><crime id="fraud" total="0"/></crime></other_crimes_against_society></area></region>
+  </region>
   <region id="south_west">
     <area id="avon_and_somerset">
       <victim_based_crime>
