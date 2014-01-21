@@ -32,7 +32,7 @@
 */
 
 // Run configuration.
-require_once ('/includes/config.php');
+require_once (__DIR__ .'/includes/config.php');
 
 
 // Validate GET information.
@@ -213,6 +213,8 @@ if ($region_element instanceof SimpleXMLElement) // If a simple xml element was 
 		?><p>This page only works with the right URLs (the region is valid, but there was no update request). Try making an
 		<a href="update.php?response=xml&regi=north_west&update=1000">North West XML Total:1000</a> or
 		<a href="update.php?response=json&regi=north_west&update=1000">North West JSON Total:1000</a> request instead.</p><?php
+		
+		print_r($_GET);
 		
 	}// Final end of update value if.
 	

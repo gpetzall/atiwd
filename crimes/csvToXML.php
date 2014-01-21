@@ -38,7 +38,7 @@
 */
 
 // Run configuration.
-require_once ('/includes/config.php');
+require_once (__DIR__ .'/includes/config.php');
 
 // Change input file from standard in config.
 $inputFilename = 'doc/input.csv';

@@ -43,7 +43,7 @@
 */
 
 // Run configuration.
-require_once ('/includes/config.php');
+require_once (__DIR__ .'/includes/config.php');
 
 // Validate GET information.
 if (isset($_GET['response'])) { // XML or JSON.

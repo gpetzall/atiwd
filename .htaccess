@@ -22,13 +22,13 @@
 	RewriteBase /~g2-petzall/atwd/crimes/
 	
 	# Adding new area; 3-0 crimes:
-	RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)/(xml|json)$   update.php?regi=$1&area=$2&$3=$4&$5=$6&$7=$8&response=$9 [L]
-	RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)/(xml|json)$   update.php?regi=$1&area=$2&$3=$4&$5=$6&response=$7 [L]
-	RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)(xml|json)$   update.php?regi=$1&area=$2&$3=$4&response=$5 [L]
-	RewriteRule ^6-2013/post/(.*)/(.*)/(xml|json)$   update.php?regi=$1&area=$2&response=$3 [L]
+	RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)/(xml|json)$   create.php?regi=$1&area=$2&$3=$4&$5=$6&$7=$8&response=$9 [L]
+	RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)/(xml|json)$   create.php?regi=$1&area=$2&$3=$4&$5=$6&response=$7 [L]
+	RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)(xml|json)$   create.php?regi=$1&area=$2&$3=$4&response=$5 [L]
+	RewriteRule ^6-2013/post/(.*)/(.*)/(xml|json)$   create.php?regi=$1&area=$2&response=$3 [L]
 	
 	# Adding new area, without any crimes:
-	RewriteRule ^6-2013/post/(.*)/(.*)/(xml|json)$  crimes/update.php?regi=$1&area=$2&response=$2x` [L]
+	#RewriteRule ^6-2013/post/(.*)/(.*)/(xml|json)$  crimes/update.php?regi=$1&area=$2&response=$2x [L]
 	
 	
 	
