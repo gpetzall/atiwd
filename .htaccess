@@ -1,0 +1,57 @@
+# .htaccess
+# 
+# Created: 2014-01-21
+# Modified: 2014-01-21
+# 
+# I know this file is unnecessarily wordy and would be bad practice in a live
+# environment. The excessive comments are for references for this assignment
+# and would be stripped in a live version.
+# 
+# Explanations
+# http://stackoverflow.com/questions/12551382/what-does-1-qsa-l-mean-in-my-htaccess-file
+# [Acessed 2014-01-21]
+# 
+# IfModule
+# http://stackoverflow.com/questions/17636382/rewriteengine-on-in-ifmodule-mod-rewrite-c-every-time
+# [Acessed 2014-01-21]
+#
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	
+	RewriteBase /~g2-petzall/atwd/crimes/
+	
+	# Adding new area; 3-0 crimes:
+	RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)/(xml|json)$   update.php?regi=$1&area=$2&$3=$4&$5=$6&$7=$8&response=$9 [L]
+	RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)/(xml|json)$   update.php?regi=$1&area=$2&$3=$4&$5=$6&response=$7 [L]
+	RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)(xml|json)$   update.php?regi=$1&area=$2&$3=$4&response=$5 [L]
+	RewriteRule ^6-2013/post/(.*)/(.*)/(xml|json)$   update.php?regi=$1&area=$2&response=$3 [L]
+	
+	# Adding new area, without any crimes:
+	RewriteRule ^6-2013/post/(.*)/(.*)/(xml|json)$  crimes/update.php?regi=$1&area=$2&response=$2x` [L]
+	
+	
+	
+</IfModule>
+
+
+# Any		(.*)
+# ([\-\d]+)	used for date 
+# QSA		query strings are passed through.
+# L			Stop after a match.
+# \			escape
+# \d		digit
+# +			one or more (no need for escape)
+# *			zero or more
+
+# RewriteRule ^6-2013/post/(.*)/(.*)/(hom|vwi|vwoi):(\d+)[-(hom|vwi|vwoi):(\d+)]*[-(hom|vwi|vwoi):(\d+)]*/(xml|json)$  update.php?regi=$1&area=$2&response=$ [L]
+
+
+
+
+
+
+
+
+
+
