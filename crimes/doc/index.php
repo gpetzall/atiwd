@@ -11,12 +11,38 @@
  * course component, dealing with part "3", visualisation, and "5", documentation.
  * 
  * Pages used as help to make this code:
- * - None so far.
  * 
+ * Newline types (\r\n)
+ * http://www.go4expert.com/articles/difference-n-rn-t8021/
+ * [Accessed 2014-02-26]
 */
 
 // Run configuration.
 require_once (__DIR__ .'../../includes/config.php');
+
+// Validate GET information.
+if (isset($_GET['vis'])) { // XML or JSON.
+	$vis = $_GET['vis'];
+} else {
+	$vis = NULL;
+}
+
+
+// Create a simple xml object for easy reading.
+$xml = simplexml_load_file('../'.$inputFilename);
+
+// Checking if the provided visualisation request is valid.
+$region_element = $xml->xpath("/crimes/region[@id='$vis']"); // A little bit of XPATH grabbing all elements with GET's id value.
+$region_element = array_shift($region_element); // Returns the simple xml element.
+
+if ($region_element instanceof SimpleXMLElement) // If a simple xml element was returned (checks if the region is valid).
+{
+	$current_region = ucwords(str_replace('_', ' ', $vis )); // Can use $vis, as it's confirmed it's a region
+}
+else
+{
+	$vis = NULL;
+}
 
 ?>
 <!DOCTYPE html>
@@ -38,25 +64,35 @@ require_once (__DIR__ .'../../includes/config.php');
 <header id="top">
 	<div class="inner">
 		<p>Crime Statistics in England and Wales from June 2013</p>
-		<h1>ATWD</h1>
+		<h1><a href="index.php">ATWD</a></h1>
 	</div>
 </header>
 
 <header id="main_header">
 	<div class="inner">
-
-
-
-		<ul id="breadcrumbs">
-			<li><a href="#">Home</a> &gt; </li>
-			<li><a href="#">East Midlands</a> &gt; </li>
-			<li>Visual data</li>
+<?php
+if ($vis != NULL)
+{
+?>		<ul id="breadcrumbs">
+			<li><a href="index.php">Home</a> &gt; </li>
+			<li><a href="index.php?vis=<?php echo $vis;?>"><?php echo $current_region .' visual data' ; ?></a> &gt; </li>
 		</ul>
 		
-		<h1>East Midlands</h1>
+		<h1><?php echo $current_region; ?></h1>
 		
-		<p class="intro">Crime statistics visualised for the East Midlands.</p>
+		<p class="intro">Crime statistics visualised for the <?php echo $current_region; ?>.</p>
+<?php
+}
+else
+{
+?>
+		<h1 id="doc">Documentation</h1>
 
+		<p class="intro">All the details about this assignment.</p>
+<?php
+}
+?>
+	
 	</div>
 
 </header>
@@ -64,20 +100,21 @@ require_once (__DIR__ .'../../includes/config.php');
 <div id="main_content">
 	<section id="navigation">
 		<nav id="get">
-			<h2>Select a region</h2>
-			<ul>
-				<li><a href="#">North East</a></li>
-				<li>North West</li>
-				<li><a href="#">Yorkshire and Humber</a></li>
-				<li><a href="#">East Midlands</a></li>
-				<li>West Midlands</li>
-				<li>East of England</li>
-				<li>London</li>
-				<li>South East</li>
-				<li>South West</li>
-				<li>Wales</li>
-				<li>British Transport</li>
-				<li>Action Fraud</li>
+			<h2>Visualise a region</h2>
+			<ul>			
+<?php
+foreach($xml->children() as $region)
+{
+	// Grabbing and formatting the region.
+	
+	$item_u = (string) $region->attributes()['id'];
+	$item_f = ucwords(str_replace('_', ' ', $item_u )); // ucwords is Very Useful.
+	
+	?>				<li><a href="<?php echo "index.php?vis=$item_u"; ?>"><?php echo $item_f; ?></a></li>
+<?php
+} // End of region list foreach loop
+?>
+
 			</ul>
 			
 		</nav>

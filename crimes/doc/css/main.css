@@ -51,11 +51,8 @@ h1 {
 }
 
 h2 {
-	margin: 0 0 20px 0;
-	font-size: 21px;
 	color: #000000;
 }
-
 
 header#top {
 	overflow: hidden;
@@ -72,6 +69,15 @@ header#top div.inner {
 	margin: 0 auto 0 auto;
 }
 
+header#top div.inner a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+header#top div.inner a:hover {
+	text-decoration: underline;
+}
+
 header#top div.inner h1 {
 	width: 150px;
 	margin: 12px 0 0 20px;
@@ -80,6 +86,8 @@ header#top div.inner h1 {
 	font-weight: normal;
 	color: #ffffff;
 }
+
+
 
 header#top div.inner p {
 	float: right;
@@ -98,7 +106,7 @@ header#main_header {
 
 div#main_content {
 	width: 1200px;
-	height: 1100px;
+	min-height: 500px;
 	margin: 0 auto;
 	padding: 0 12px 0 8px;
 	background-color: #ffffff;
@@ -127,6 +135,12 @@ nav#get {
 	background-color: #ffffff;
 	right: 3px;
 	top: -191px;
+}
+
+nav#get h2 {
+	margin: 0 0 20px 0;
+	font-size: 21px;
+	color: #000000;
 }
 
 nav#get ul {
@@ -162,6 +176,10 @@ ul#breadcrumbs li {
 	float: left;
 	margin: 0 5px 9px 0;
 	padding: 0 0 5px 0;
+}
+
+h1#doc {
+	margin-top: 47px;
 }
 
 p.intro {
