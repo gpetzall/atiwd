@@ -1,6 +1,6 @@
 <?php
 /* 
- * File: "includes/delete.php"
+ * File: "~g2-petzall/atwd/crimes/delete.php"
  * 
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-15

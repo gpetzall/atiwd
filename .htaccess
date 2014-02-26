@@ -1,7 +1,7 @@
 # .htaccess
 # 
 # Created: 2014-01-21
-# Modified: 2014-01-21
+# Modified: 2014-02-26
 # 
 # I know this file is unnecessarily wordy and would be bad practice in a live
 # environment. The excessive comments are for references for this assignment
@@ -29,6 +29,10 @@
 	
 	# Adding new area, without any crimes:
 	#RewriteRule ^6-2013/post/(.*)/(.*)/(xml|json)$  crimes/update.php?regi=$1&area=$2&response=$2x [L]
+	
+	# Making sure the assignment URL works:
+	RewriteRule ^doc/index.html$ doc/index.php [L]
+	RewriteRule ^doc/$ doc/index.php [L]
 	
 	
 	

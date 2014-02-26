@@ -1,6 +1,6 @@
 <?php
 /* 
- * File: "includes/error.php"
+ * File: "~g2-petzall/atwd/crimes/error.php"
  * 
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-17
