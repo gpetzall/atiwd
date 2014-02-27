@@ -58,13 +58,13 @@ ErrorDocument 501 /~g2-petzall/atwd/crimes/error.php?err=404
 	RewriteRule ^6-2013/(\w+)/(xml|json)$		getRegion.php?regi=$1&response=$2 [L]
 	RewriteRule ^6-2013/(\w+)/(\w+)$		error.php?err=601 [L]
 	
-	# 2.1.1 Get totals by region + England/Wales:
-	RewriteRule ^6-2013/(xml|json)$		get.php?response=$1 [L]
-	RewriteRule ^6-2013/(\w+)$		error.php?err=601 [L]
-	
 	# Resetting the XML database:
 	RewriteRule ^6-2013/reset/$		reset.php [L]
 	RewriteRule ^6-2013/reset$		reset.php [L]
+	
+	# 2.1.1 Get totals by region + England/Wales:
+	RewriteRule ^6-2013/(xml|json)$		get.php?response=$1 [L]
+	RewriteRule ^6-2013/(\w+)$		error.php?err=601 [L]
 	
 	# 3.0.0 / 5.0.0 Making sure the assignment URL works:
 	RewriteRule ^doc/index.html$		doc/index.php [L]

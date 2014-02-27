@@ -63,18 +63,48 @@ if ($debug == TRUE)
 	ini_set('auto_detect_line_endings', true);
 }
 
-
+// CACHE - LOCAL
+// 
 // Caches the XML file (though hardly needed) the browser's JavaScript engine stores
 // it until there is a newer version available on the server. Useful for any API,
-// demonstrated in the visualisation.
+// demonstrated in the visualisation. It uses this line of code: 
 header('last-modified:'.date('r', filemtime(BASE_URI.'doc/crimes.xml')));
 
 
 
+// CACHE - SERVER
+// 
+// This hack uses cache.xls as a server side cached file. Whenever it is the same age
+// or younger the server will serve the cached file instead. 5 seconds are added to
+// make sure the server will not miscalculate as they are generally updated together.
+// 
+// This is naturally not compatible with the local cache.
+// 
+// Each time any of the modifying scripts run and update the crimes.xml, they also
+// update the cache.
+
+
+// Checking time difference between the cache and database files' edits.
+$db_time = filemtime(BASE_URI.'doc/crimes.xml');
+$cache_time = filemtime(BASE_URI.'doc/cache.xml');
+
 // Determine file locations.
-$inputFilename = 'doc/crimes.xml'; // File that is used for the script (one exception).
-$outputFilename = 'doc/crimes.xml'; // To create the file and also for any database edits.
-$backupFilename = 'doc/backup.xml'; // To create a fresh, unedited, backup.
+$outputFilename = BASE_URI.'doc/crimes.xml'; // To create the file and also for any database edits.
+$cacheFilename = BASE_URI.'doc/cache.xml'; // To make a cached file.
+$backupFilename = BASE_URI.'doc/backup.xml'; // To create a fresh, unedited, backup.
+
+
+// Check if cache is newer, if so, use it.
+if ($db_time <= ($cache_time + 5))
+{
+	$inputFilename = BASE_URI.'doc/cache.xml'; // File that is used for the script (one exception).
+}
+else // Otherwise load the real file.
+{
+	$inputFilename = BASE_URI.'doc/crimes.xml'; // File that is used for the script (one exception).
+}
+
+
 
 
 

@@ -228,6 +228,8 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 			// The simple XML object retains changes made to child elements.
 			// The drawback is that it doesn't format it prettily with indentations, but it works!
 			$xml->asXML($outputFilename);
+			// Save the update as well as update the cache.
+			$xml->asXML($cacheFilename);
 			
 			
 			// Variables for the main calculation loop.

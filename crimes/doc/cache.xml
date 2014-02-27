@@ -1,0 +1,1377 @@
+<?xml version="1.0"?>
+<crimes>
+  <region id="north_east">
+    <area id="cleveland">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="6370">
+          <crime id="homicide" total="3"/>
+          <crime id="violence_with_injury" total="3737"/>
+          <crime id="violence_without_injury" total="2630"/>
+        </crime>
+        <crime id="sexual_offences" total="563"/>
+        <crime id="robbery" total="259"/>
+        <crime id="theft_offences" total="19811">
+          <crime id="burglary" total="4561">
+            <crime id="domestic_burglary" total="2054"/>
+            <crime id="non_domestic_burglary" total="2507"/>
+          </crime>
+          <crime id="vehicle_offences" total="3329"/>
+          <crime id="theft_from_the_person" total="372"/>
+          <crime id="bicycle_theft" total="994"/>
+          <crime id="shoplifting" total="5174"/>
+          <crime id="all_other_theft_offences" total="5381"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="7934"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="2116"/>
+        <crime id="possession_of_weapon_offences" total="267"/>
+        <crime id="public_order_offences" total="1342"/>
+        <crime id="miscellaneous_crimes_against_society" total="405"/>
+        <crime id="fraud" total="455"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="durham">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="4287">
+          <crime id="homicide" total="6"/>
+          <crime id="violence_with_injury" total="2420"/>
+          <crime id="violence_without_injury" total="1861"/>
+        </crime>
+        <crime id="sexual_offences" total="360"/>
+        <crime id="robbery" total="108"/>
+        <crime id="theft_offences" total="15009">
+          <crime id="burglary" total="3983">
+            <crime id="domestic_burglary" total="1385"/>
+            <crime id="non_domestic_burglary" total="2598"/>
+          </crime>
+          <crime id="vehicle_offences" total="3355"/>
+          <crime id="theft_from_the_person" total="149"/>
+          <crime id="bicycle_theft" total="595"/>
+          <crime id="shoplifting" total="2827"/>
+          <crime id="all_other_theft_offences" total="4100"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="6752"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1281"/>
+        <crime id="possession_of_weapon_offences" total="218"/>
+        <crime id="public_order_offences" total="1178"/>
+        <crime id="miscellaneous_crimes_against_society" total="476"/>
+        <crime id="fraud" total="305"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="northumbria">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="9186">
+          <crime id="homicide" total="17"/>
+          <crime id="violence_with_injury" total="6008"/>
+          <crime id="violence_without_injury" total="3161"/>
+        </crime>
+        <crime id="sexual_offences" total="914"/>
+        <crime id="robbery" total="465"/>
+        <crime id="theft_offences" total="34506">
+          <crime id="burglary" total="8514">
+            <crime id="domestic_burglary" total="3322"/>
+            <crime id="non_domestic_burglary" total="5192"/>
+          </crime>
+          <crime id="vehicle_offences" total="6105"/>
+          <crime id="theft_from_the_person" total="1076"/>
+          <crime id="bicycle_theft" total="1913"/>
+          <crime id="shoplifting" total="8678"/>
+          <crime id="all_other_theft_offences" total="8220"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="14193"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="4730"/>
+        <crime id="possession_of_weapon_offences" total="633"/>
+        <crime id="public_order_offences" total="2844"/>
+        <crime id="miscellaneous_crimes_against_society" total="1104"/>
+        <crime id="fraud" total="911"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="north_west">
+    <area id="cheshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="10882">
+          <crime id="homicide" total="5"/>
+          <crime id="violence_with_injury" total="4889"/>
+          <crime id="violence_without_injury" total="5988"/>
+        </crime>
+        <crime id="sexual_offences" total="880"/>
+        <crime id="robbery" total="321"/>
+        <crime id="theft_offences" total="28840">
+          <crime id="burglary" total="6884">
+            <crime id="domestic_burglary" total="2895"/>
+            <crime id="non_domestic_burglary" total="3989"/>
+          </crime>
+          <crime id="vehicle_offences" total="5706"/>
+          <crime id="theft_from_the_person" total="954"/>
+          <crime id="bicycle_theft" total="1793"/>
+          <crime id="shoplifting" total="6580"/>
+          <crime id="all_other_theft_offences" total="6923"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="9976"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="2825"/>
+        <crime id="possession_of_weapon_offences" total="260"/>
+        <crime id="public_order_offences" total="2123"/>
+        <crime id="miscellaneous_crimes_against_society" total="578"/>
+        <crime id="fraud" total="1223"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="cumbria">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="4454">
+          <crime id="homicide" total="6"/>
+          <crime id="violence_with_injury" total="2331"/>
+          <crime id="violence_without_injury" total="2117"/>
+        </crime>
+        <crime id="sexual_offences" total="371"/>
+        <crime id="robbery" total="58"/>
+        <crime id="theft_offences" total="9784">
+          <crime id="burglary" total="2297">
+            <crime id="domestic_burglary" total="678"/>
+            <crime id="non_domestic_burglary" total="1619"/>
+          </crime>
+          <crime id="vehicle_offences" total="1571"/>
+          <crime id="theft_from_the_person" total="137"/>
+          <crime id="bicycle_theft" total="432"/>
+          <crime id="shoplifting" total="2459"/>
+          <crime id="all_other_theft_offences" total="2888"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="5290"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1531"/>
+        <crime id="possession_of_weapon_offences" total="143"/>
+        <crime id="public_order_offences" total="1008"/>
+        <crime id="miscellaneous_crimes_against_society" total="331"/>
+        <crime id="fraud" total="316"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="greater_manchester">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="27933">
+          <crime id="homicide" total="36"/>
+          <crime id="violence_with_injury" total="14293"/>
+          <crime id="violence_without_injury" total="13604"/>
+        </crime>
+        <crime id="sexual_offences" total="2940"/>
+        <crime id="robbery" total="3898"/>
+        <crime id="theft_offences" total="94336">
+          <crime id="burglary" total="28363">
+            <crime id="domestic_burglary" total="15348"/>
+            <crime id="non_domestic_burglary" total="13015"/>
+          </crime>
+          <crime id="vehicle_offences" total="20700"/>
+          <crime id="theft_from_the_person" total="5456"/>
+          <crime id="bicycle_theft" total="4518"/>
+          <crime id="shoplifting" total="13889"/>
+          <crime id="all_other_theft_offences" total="21410"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="28765"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="9004"/>
+        <crime id="possession_of_weapon_offences" total="1063"/>
+        <crime id="public_order_offences" total="6431"/>
+        <crime id="miscellaneous_crimes_against_society" total="1906"/>
+        <crime id="fraud" total="2581"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="lancashire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="18562">
+          <crime id="homicide" total="14"/>
+          <crime id="violence_with_injury" total="10654"/>
+          <crime id="violence_without_injury" total="7894"/>
+        </crime>
+        <crime id="sexual_offences" total="1738"/>
+        <crime id="robbery" total="626"/>
+        <crime id="theft_offences" total="46045">
+          <crime id="burglary" total="11856">
+            <crime id="domestic_burglary" total="4321"/>
+            <crime id="non_domestic_burglary" total="7535"/>
+          </crime>
+          <crime id="vehicle_offences" total="8527"/>
+          <crime id="theft_from_the_person" total="958"/>
+          <crime id="bicycle_theft" total="2135"/>
+          <crime id="shoplifting" total="8286"/>
+          <crime id="all_other_theft_offences" total="14283"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="16589"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="3961"/>
+        <crime id="possession_of_weapon_offences" total="514"/>
+        <crime id="public_order_offences" total="2618"/>
+        <crime id="miscellaneous_crimes_against_society" total="951"/>
+        <crime id="fraud" total="1823"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="merseyside">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="11323">
+          <crime id="homicide" total="12"/>
+          <crime id="violence_with_injury" total="6536"/>
+          <crime id="violence_without_injury" total="4775"/>
+        </crime>
+        <crime id="sexual_offences" total="1338"/>
+        <crime id="robbery" total="1223"/>
+        <crime id="theft_offences" total="43482">
+          <crime id="burglary" total="11574">
+            <crime id="domestic_burglary" total="6419"/>
+            <crime id="non_domestic_burglary" total="5155"/>
+          </crime>
+          <crime id="vehicle_offences" total="8668"/>
+          <crime id="theft_from_the_person" total="2518"/>
+          <crime id="bicycle_theft" total="1692"/>
+          <crime id="shoplifting" total="9180"/>
+          <crime id="all_other_theft_offences" total="9850"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="17013"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="10169"/>
+        <crime id="possession_of_weapon_offences" total="663"/>
+        <crime id="public_order_offences" total="3149"/>
+        <crime id="miscellaneous_crimes_against_society" total="956"/>
+        <crime id="fraud" total="1629"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="yorkshire_and_humber">
+    <area id="humberside">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="11461">
+          <crime id="homicide" total="6"/>
+          <crime id="violence_with_injury" total="6811"/>
+          <crime id="violence_without_injury" total="4644"/>
+        </crime>
+        <crime id="sexual_offences" total="1219"/>
+        <crime id="robbery" total="479"/>
+        <crime id="theft_offences" total="33016">
+          <crime id="burglary" total="10120">
+            <crime id="domestic_burglary" total="3832"/>
+            <crime id="non_domestic_burglary" total="6288"/>
+          </crime>
+          <crime id="vehicle_offences" total="4834"/>
+          <crime id="theft_from_the_person" total="581"/>
+          <crime id="bicycle_theft" total="2332"/>
+          <crime id="shoplifting" total="6844"/>
+          <crime id="all_other_theft_offences" total="8305"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="11020"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="2459"/>
+        <crime id="possession_of_weapon_offences" total="277"/>
+        <crime id="public_order_offences" total="2723"/>
+        <crime id="miscellaneous_crimes_against_society" total="838"/>
+        <crime id="fraud" total="1215"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="north_yorkshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="6009">
+          <crime id="homicide" total="5"/>
+          <crime id="violence_with_injury" total="3548"/>
+          <crime id="violence_without_injury" total="2456"/>
+        </crime>
+        <crime id="sexual_offences" total="666"/>
+        <crime id="robbery" total="123"/>
+        <crime id="theft_offences" total="17605">
+          <crime id="burglary" total="4313">
+            <crime id="domestic_burglary" total="1619"/>
+            <crime id="non_domestic_burglary" total="2694"/>
+          </crime>
+          <crime id="vehicle_offences" total="2689"/>
+          <crime id="theft_from_the_person" total="477"/>
+          <crime id="bicycle_theft" total="1179"/>
+          <crime id="shoplifting" total="3722"/>
+          <crime id="all_other_theft_offences" total="5225"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="5867"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1862"/>
+        <crime id="possession_of_weapon_offences" total="178"/>
+        <crime id="public_order_offences" total="1121"/>
+        <crime id="miscellaneous_crimes_against_society" total="470"/>
+        <crime id="fraud" total="900"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="south_yorkshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="10450">
+          <crime id="homicide" total="18"/>
+          <crime id="violence_with_injury" total="7313"/>
+          <crime id="violence_without_injury" total="3119"/>
+        </crime>
+        <crime id="sexual_offences" total="903"/>
+        <crime id="robbery" total="964"/>
+        <crime id="theft_offences" total="54647">
+          <crime id="burglary" total="16661">
+            <crime id="domestic_burglary" total="8206"/>
+            <crime id="non_domestic_burglary" total="8455"/>
+          </crime>
+          <crime id="vehicle_offences" total="12439"/>
+          <crime id="theft_from_the_person" total="1805"/>
+          <crime id="bicycle_theft" total="1448"/>
+          <crime id="shoplifting" total="9680"/>
+          <crime id="all_other_theft_offences" total="12614"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="16644"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="4401"/>
+        <crime id="possession_of_weapon_offences" total="505"/>
+        <crime id="public_order_offences" total="2029"/>
+        <crime id="miscellaneous_crimes_against_society" total="894"/>
+        <crime id="fraud" total="1679"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="west_yorkshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="21480">
+          <crime id="homicide" total="15"/>
+          <crime id="violence_with_injury" total="11737"/>
+          <crime id="violence_without_injury" total="9728"/>
+        </crime>
+        <crime id="sexual_offences" total="2684"/>
+        <crime id="robbery" total="1974"/>
+        <crime id="theft_offences" total="93721">
+          <crime id="burglary" total="26608">
+            <crime id="domestic_burglary" total="12969"/>
+            <crime id="non_domestic_burglary" total="13639"/>
+          </crime>
+          <crime id="vehicle_offences" total="21577"/>
+          <crime id="theft_from_the_person" total="4993"/>
+          <crime id="bicycle_theft" total="2109"/>
+          <crime id="shoplifting" total="14052"/>
+          <crime id="all_other_theft_offences" total="24382"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="25654"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="6798"/>
+        <crime id="possession_of_weapon_offences" total="689"/>
+        <crime id="public_order_offences" total="4673"/>
+        <crime id="miscellaneous_crimes_against_society" total="2206"/>
+        <crime id="fraud" total="3867"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="east_midlands">
+    <area id="derbyshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="9529">
+          <crime id="homicide" total="3"/>
+          <crime id="violence_with_injury" total="5220"/>
+          <crime id="violence_without_injury" total="4306"/>
+        </crime>
+        <crime id="sexual_offences" total="840"/>
+        <crime id="robbery" total="540"/>
+        <crime id="theft_offences" total="26478">
+          <crime id="burglary" total="7279">
+            <crime id="domestic_burglary" total="2868"/>
+            <crime id="non_domestic_burglary" total="4411"/>
+          </crime>
+          <crime id="vehicle_offences" total="5420"/>
+          <crime id="theft_from_the_person" total="673"/>
+          <crime id="bicycle_theft" total="1199"/>
+          <crime id="shoplifting" total="5090"/>
+          <crime id="all_other_theft_offences" total="6817"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="8855"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="2651"/>
+        <crime id="possession_of_weapon_offences" total="277"/>
+        <crime id="public_order_offences" total="1183"/>
+        <crime id="miscellaneous_crimes_against_society" total="617"/>
+        <crime id="fraud" total="779"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="leicestershire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="10157">
+          <crime id="homicide" total="10"/>
+          <crime id="violence_with_injury" total="4442"/>
+          <crime id="violence_without_injury" total="5705"/>
+        </crime>
+        <crime id="sexual_offences" total="1024"/>
+        <crime id="robbery" total="705"/>
+        <crime id="theft_offences" total="30428">
+          <crime id="burglary" total="7161">
+            <crime id="domestic_burglary" total="3743"/>
+            <crime id="non_domestic_burglary" total="3418"/>
+          </crime>
+          <crime id="vehicle_offences" total="6516"/>
+          <crime id="theft_from_the_person" total="1388"/>
+          <crime id="bicycle_theft" total="2167"/>
+          <crime id="shoplifting" total="5541"/>
+          <crime id="all_other_theft_offences" total="7655"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="9430"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="2223"/>
+        <crime id="possession_of_weapon_offences" total="297"/>
+        <crime id="public_order_offences" total="2342"/>
+        <crime id="miscellaneous_crimes_against_society" total="746"/>
+        <crime id="fraud" total="1120"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="lincolnshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="5620">
+          <crime id="homicide" total="6"/>
+          <crime id="violence_with_injury" total="2999"/>
+          <crime id="violence_without_injury" total="2615"/>
+        </crime>
+        <crime id="sexual_offences" total="579"/>
+        <crime id="robbery" total="172"/>
+        <crime id="theft_offences" total="20428">
+          <crime id="burglary" total="5386">
+            <crime id="domestic_burglary" total="1932"/>
+            <crime id="non_domestic_burglary" total="3454"/>
+          </crime>
+          <crime id="vehicle_offences" total="3316"/>
+          <crime id="theft_from_the_person" total="400"/>
+          <crime id="bicycle_theft" total="1466"/>
+          <crime id="shoplifting" total="4645"/>
+          <crime id="all_other_theft_offences" total="5215"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="6026"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1541"/>
+        <crime id="possession_of_weapon_offences" total="250"/>
+        <crime id="public_order_offences" total="1357"/>
+        <crime id="miscellaneous_crimes_against_society" total="554"/>
+        <crime id="fraud" total="496"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="northamptonshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="7882">
+          <crime id="homicide" total="6"/>
+          <crime id="violence_with_injury" total="4001"/>
+          <crime id="violence_without_injury" total="3875"/>
+        </crime>
+        <crime id="sexual_offences" total="758"/>
+        <crime id="robbery" total="596"/>
+        <crime id="theft_offences" total="23626">
+          <crime id="burglary" total="6459">
+            <crime id="domestic_burglary" total="3144"/>
+            <crime id="non_domestic_burglary" total="3315"/>
+          </crime>
+          <crime id="vehicle_offences" total="5342"/>
+          <crime id="theft_from_the_person" total="1167"/>
+          <crime id="bicycle_theft" total="898"/>
+          <crime id="shoplifting" total="4468"/>
+          <crime id="all_other_theft_offences" total="5292"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="7966"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1798"/>
+        <crime id="possession_of_weapon_offences" total="247"/>
+        <crime id="public_order_offences" total="953"/>
+        <crime id="miscellaneous_crimes_against_society" total="504"/>
+        <crime id="fraud" total="943"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="nottinghamshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="13217">
+          <crime id="homicide" total="14"/>
+          <crime id="violence_with_injury" total="7106"/>
+          <crime id="violence_without_injury" total="6097"/>
+        </crime>
+        <crime id="sexual_offences" total="1020"/>
+        <crime id="robbery" total="1005"/>
+        <crime id="theft_offences" total="35186">
+          <crime id="burglary" total="8606">
+            <crime id="domestic_burglary" total="4353"/>
+            <crime id="non_domestic_burglary" total="4253"/>
+          </crime>
+          <crime id="vehicle_offences" total="6893"/>
+          <crime id="theft_from_the_person" total="1980"/>
+          <crime id="bicycle_theft" total="1955"/>
+          <crime id="shoplifting" total="7138"/>
+          <crime id="all_other_theft_offences" total="8614"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="10662"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="3814"/>
+        <crime id="possession_of_weapon_offences" total="472"/>
+        <crime id="public_order_offences" total="1793"/>
+        <crime id="miscellaneous_crimes_against_society" total="781"/>
+        <crime id="fraud" total="827"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="west_midlands">
+    <area id="staffordshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="13299">
+          <crime id="homicide" total="4"/>
+          <crime id="violence_with_injury" total="6982"/>
+          <crime id="violence_without_injury" total="6313"/>
+        </crime>
+        <crime id="sexual_offences" total="1171"/>
+        <crime id="robbery" total="485"/>
+        <crime id="theft_offences" total="25557">
+          <crime id="burglary" total="6634">
+            <crime id="domestic_burglary" total="2712"/>
+            <crime id="non_domestic_burglary" total="3922"/>
+          </crime>
+          <crime id="vehicle_offences" total="4741"/>
+          <crime id="theft_from_the_person" total="486"/>
+          <crime id="bicycle_theft" total="894"/>
+          <crime id="shoplifting" total="5148"/>
+          <crime id="all_other_theft_offences" total="7654"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="10410"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="3549"/>
+        <crime id="possession_of_weapon_offences" total="320"/>
+        <crime id="public_order_offences" total="1825"/>
+        <crime id="miscellaneous_crimes_against_society" total="877"/>
+        <crime id="fraud" total="1404"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="warwickshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="4178">
+          <crime id="homicide" total="1"/>
+          <crime id="violence_with_injury" total="2600"/>
+          <crime id="violence_without_injury" total="1577"/>
+        </crime>
+        <crime id="sexual_offences" total="481"/>
+        <crime id="robbery" total="253"/>
+        <crime id="theft_offences" total="16745">
+          <crime id="burglary" total="4290">
+            <crime id="domestic_burglary" total="1855"/>
+            <crime id="non_domestic_burglary" total="2435"/>
+          </crime>
+          <crime id="vehicle_offences" total="4185"/>
+          <crime id="theft_from_the_person" total="290"/>
+          <crime id="bicycle_theft" total="722"/>
+          <crime id="shoplifting" total="2211"/>
+          <crime id="all_other_theft_offences" total="5047"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="4500"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1427"/>
+        <crime id="possession_of_weapon_offences" total="126"/>
+        <crime id="public_order_offences" total="724"/>
+        <crime id="miscellaneous_crimes_against_society" total="317"/>
+        <crime id="fraud" total="472"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="west_mercia">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="11262">
+          <crime id="homicide" total="16"/>
+          <crime id="violence_with_injury" total="6336"/>
+          <crime id="violence_without_injury" total="4910"/>
+        </crime>
+        <crime id="sexual_offences" total="1228"/>
+        <crime id="robbery" total="379"/>
+        <crime id="theft_offences" total="29572">
+          <crime id="burglary" total="7536">
+            <crime id="domestic_burglary" total="2588"/>
+            <crime id="non_domestic_burglary" total="4948"/>
+          </crime>
+          <crime id="vehicle_offences" total="5908"/>
+          <crime id="theft_from_the_person" total="568"/>
+          <crime id="bicycle_theft" total="1336"/>
+          <crime id="shoplifting" total="5895"/>
+          <crime id="all_other_theft_offences" total="8329"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="9413"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="3140"/>
+        <crime id="possession_of_weapon_offences" total="335"/>
+        <crime id="public_order_offences" total="2040"/>
+        <crime id="miscellaneous_crimes_against_society" total="870"/>
+        <crime id="fraud" total="970"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="west_midlands">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="30387">
+          <crime id="homicide" total="42"/>
+          <crime id="violence_with_injury" total="18087"/>
+          <crime id="violence_without_injury" total="12258"/>
+        </crime>
+        <crime id="sexual_offences" total="2786"/>
+        <crime id="robbery" total="5364"/>
+        <crime id="theft_offences" total="86242">
+          <crime id="burglary" total="24249">
+            <crime id="domestic_burglary" total="13365"/>
+            <crime id="non_domestic_burglary" total="10884"/>
+          </crime>
+          <crime id="vehicle_offences" total="23093"/>
+          <crime id="theft_from_the_person" total="3689"/>
+          <crime id="bicycle_theft" total="3026"/>
+          <crime id="shoplifting" total="14703"/>
+          <crime id="all_other_theft_offences" total="17482"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="24885"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="8132"/>
+        <crime id="possession_of_weapon_offences" total="1222"/>
+        <crime id="public_order_offences" total="5642"/>
+        <crime id="miscellaneous_crimes_against_society" total="2210"/>
+        <crime id="fraud" total="4441"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="east_of_england">
+    <area id="bedfordshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="5977">
+          <crime id="homicide" total="7"/>
+          <crime id="violence_with_injury" total="3103"/>
+          <crime id="violence_without_injury" total="2867"/>
+        </crime>
+        <crime id="sexual_offences" total="481"/>
+        <crime id="robbery" total="615"/>
+        <crime id="theft_offences" total="18693">
+          <crime id="burglary" total="4960">
+            <crime id="domestic_burglary" total="2885"/>
+            <crime id="non_domestic_burglary" total="2075"/>
+          </crime>
+          <crime id="vehicle_offences" total="4510"/>
+          <crime id="theft_from_the_person" total="561"/>
+          <crime id="bicycle_theft" total="983"/>
+          <crime id="shoplifting" total="3198"/>
+          <crime id="all_other_theft_offences" total="4481"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="5746"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1542"/>
+        <crime id="possession_of_weapon_offences" total="264"/>
+        <crime id="public_order_offences" total="1128"/>
+        <crime id="miscellaneous_crimes_against_society" total="491"/>
+        <crime id="fraud" total="516"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="cambridgeshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="6170">
+          <crime id="homicide" total="9"/>
+          <crime id="violence_with_injury" total="2873"/>
+          <crime id="violence_without_injury" total="3288"/>
+        </crime>
+        <crime id="sexual_offences" total="672"/>
+        <crime id="robbery" total="332"/>
+        <crime id="theft_offences" total="25537">
+          <crime id="burglary" total="5501">
+            <crime id="domestic_burglary" total="2573"/>
+            <crime id="non_domestic_burglary" total="2928"/>
+          </crime>
+          <crime id="vehicle_offences" total="4483"/>
+          <crime id="theft_from_the_person" total="985"/>
+          <crime id="bicycle_theft" total="3611"/>
+          <crime id="shoplifting" total="4442"/>
+          <crime id="all_other_theft_offences" total="6515"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="6406"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="2874"/>
+        <crime id="possession_of_weapon_offences" total="217"/>
+        <crime id="public_order_offences" total="1281"/>
+        <crime id="miscellaneous_crimes_against_society" total="506"/>
+        <crime id="fraud" total="1096"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="essex">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="17915">
+          <crime id="homicide" total="20"/>
+          <crime id="violence_with_injury" total="8829"/>
+          <crime id="violence_without_injury" total="9066"/>
+        </crime>
+        <crime id="sexual_offences" total="1527"/>
+        <crime id="robbery" total="1172"/>
+        <crime id="theft_offences" total="53708">
+          <crime id="burglary" total="14367">
+            <crime id="domestic_burglary" total="7874"/>
+            <crime id="non_domestic_burglary" total="6493"/>
+          </crime>
+          <crime id="vehicle_offences" total="12856"/>
+          <crime id="theft_from_the_person" total="1699"/>
+          <crime id="bicycle_theft" total="2248"/>
+          <crime id="shoplifting" total="9274"/>
+          <crime id="all_other_theft_offences" total="13264"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="14309"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="4122"/>
+        <crime id="possession_of_weapon_offences" total="832"/>
+        <crime id="public_order_offences" total="3203"/>
+        <crime id="miscellaneous_crimes_against_society" total="1128"/>
+        <crime id="fraud" total="1825"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="hertfordshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="7822">
+          <crime id="homicide" total="10"/>
+          <crime id="violence_with_injury" total="4080"/>
+          <crime id="violence_without_injury" total="3732"/>
+        </crime>
+        <crime id="sexual_offences" total="691"/>
+        <crime id="robbery" total="439"/>
+        <crime id="theft_offences" total="25608">
+          <crime id="burglary" total="5648">
+            <crime id="domestic_burglary" total="2900"/>
+            <crime id="non_domestic_burglary" total="2748"/>
+          </crime>
+          <crime id="vehicle_offences" total="5537"/>
+          <crime id="theft_from_the_person" total="1336"/>
+          <crime id="bicycle_theft" total="1174"/>
+          <crime id="shoplifting" total="5409"/>
+          <crime id="all_other_theft_offences" total="6504"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="8054"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="4785"/>
+        <crime id="possession_of_weapon_offences" total="293"/>
+        <crime id="public_order_offences" total="2062"/>
+        <crime id="miscellaneous_crimes_against_society" total="788"/>
+        <crime id="fraud" total="1326"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="norfolk">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="8034">
+          <crime id="homicide" total="5"/>
+          <crime id="violence_with_injury" total="3875"/>
+          <crime id="violence_without_injury" total="4154"/>
+        </crime>
+        <crime id="sexual_offences" total="776"/>
+        <crime id="robbery" total="164"/>
+        <crime id="theft_offences" total="17058">
+          <crime id="burglary" total="3779">
+            <crime id="domestic_burglary" total="1383"/>
+            <crime id="non_domestic_burglary" total="2396"/>
+          </crime>
+          <crime id="vehicle_offences" total="2774"/>
+          <crime id="theft_from_the_person" total="376"/>
+          <crime id="bicycle_theft" total="1241"/>
+          <crime id="shoplifting" total="3852"/>
+          <crime id="all_other_theft_offences" total="5036"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="6988"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="2413"/>
+        <crime id="possession_of_weapon_offences" total="212"/>
+        <crime id="public_order_offences" total="1483"/>
+        <crime id="miscellaneous_crimes_against_society" total="365"/>
+        <crime id="fraud" total="503"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="suffolk">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="7109">
+          <crime id="homicide" total="8"/>
+          <crime id="violence_with_injury" total="3683"/>
+          <crime id="violence_without_injury" total="3418"/>
+        </crime>
+        <crime id="sexual_offences" total="708"/>
+        <crime id="robbery" total="226"/>
+        <crime id="theft_offences" total="18726">
+          <crime id="burglary" total="4776">
+            <crime id="domestic_burglary" total="1872"/>
+            <crime id="non_domestic_burglary" total="2904"/>
+          </crime>
+          <crime id="vehicle_offences" total="3692"/>
+          <crime id="theft_from_the_person" total="423"/>
+          <crime id="bicycle_theft" total="1159"/>
+          <crime id="shoplifting" total="3721"/>
+          <crime id="all_other_theft_offences" total="4955"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="6844"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1961"/>
+        <crime id="possession_of_weapon_offences" total="233"/>
+        <crime id="public_order_offences" total="1945"/>
+        <crime id="miscellaneous_crimes_against_society" total="671"/>
+        <crime id="fraud" total="724"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="london">
+    <area id="london_city_of">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="534">
+          <crime id="homicide" total="0"/>
+          <crime id="violence_with_injury" total="298"/>
+          <crime id="violence_without_injury" total="236"/>
+        </crime>
+        <crime id="sexual_offences" total="50"/>
+        <crime id="robbery" total="48"/>
+        <crime id="theft_offences" total="3761">
+          <crime id="burglary" total="341">
+            <crime id="domestic_burglary" total="34"/>
+            <crime id="non_domestic_burglary" total="307"/>
+          </crime>
+          <crime id="vehicle_offences" total="188"/>
+          <crime id="theft_from_the_person" total="353"/>
+          <crime id="bicycle_theft" total="326"/>
+          <crime id="shoplifting" total="584"/>
+          <crime id="all_other_theft_offences" total="1969"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="237"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="488"/>
+        <crime id="possession_of_weapon_offences" total="22"/>
+        <crime id="public_order_offences" total="201"/>
+        <crime id="miscellaneous_crimes_against_society" total="181"/>
+        <crime id="fraud" total="30"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="metropolitan_police">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="123188">
+          <crime id="homicide" total="99"/>
+          <crime id="violence_with_injury" total="56496"/>
+          <crime id="violence_without_injury" total="66593"/>
+        </crime>
+        <crime id="sexual_offences" total="9905"/>
+        <crime id="robbery" total="32714"/>
+        <crime id="theft_offences" total="406098">
+          <crime id="burglary" total="90742">
+            <crime id="domestic_burglary" total="59111"/>
+            <crime id="non_domestic_burglary" total="31631"/>
+          </crime>
+          <crime id="vehicle_offences" total="92257"/>
+          <crime id="theft_from_the_person" total="48904"/>
+          <crime id="bicycle_theft" total="20160"/>
+          <crime id="shoplifting" total="36918"/>
+          <crime id="all_other_theft_offences" total="117117"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="57307"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="50775"/>
+        <crime id="possession_of_weapon_offences" total="3751"/>
+        <crime id="public_order_offences" total="26429"/>
+        <crime id="miscellaneous_crimes_against_society" total="7710"/>
+        <crime id="fraud" total="26756"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="south_east">
+    <area id="hampshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="21314">
+          <crime id="homicide" total="11"/>
+          <crime id="violence_with_injury" total="10879"/>
+          <crime id="violence_without_injury" total="10424"/>
+        </crime>
+        <crime id="sexual_offences" total="1740"/>
+        <crime id="robbery" total="694"/>
+        <crime id="theft_offences" total="49495">
+          <crime id="burglary" total="10811">
+            <crime id="domestic_burglary" total="3753"/>
+            <crime id="non_domestic_burglary" total="7058"/>
+          </crime>
+          <crime id="vehicle_offences" total="8133"/>
+          <crime id="theft_from_the_person" total="1769"/>
+          <crime id="bicycle_theft" total="3794"/>
+          <crime id="shoplifting" total="11017"/>
+          <crime id="all_other_theft_offences" total="13971"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="18004"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="6582"/>
+        <crime id="possession_of_weapon_offences" total="524"/>
+        <crime id="public_order_offences" total="4417"/>
+        <crime id="miscellaneous_crimes_against_society" total="1207"/>
+        <crime id="fraud" total="2123"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="kent">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="19692">
+          <crime id="homicide" total="10"/>
+          <crime id="violence_with_injury" total="10393"/>
+          <crime id="violence_without_injury" total="9289"/>
+        </crime>
+        <crime id="sexual_offences" total="1588"/>
+        <crime id="robbery" total="951"/>
+        <crime id="theft_offences" total="51287">
+          <crime id="burglary" total="13977">
+            <crime id="domestic_burglary" total="6557"/>
+            <crime id="non_domestic_burglary" total="7420"/>
+          </crime>
+          <crime id="vehicle_offences" total="10535"/>
+          <crime id="theft_from_the_person" total="848"/>
+          <crime id="bicycle_theft" total="1651"/>
+          <crime id="shoplifting" total="10441"/>
+          <crime id="all_other_theft_offences" total="13835"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="17803"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="4167"/>
+        <crime id="possession_of_weapon_offences" total="428"/>
+        <crime id="public_order_offences" total="2299"/>
+        <crime id="miscellaneous_crimes_against_society" total="1214"/>
+        <crime id="fraud" total="1495"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="surrey">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="8644">
+          <crime id="homicide" total="4"/>
+          <crime id="violence_with_injury" total="2977"/>
+          <crime id="violence_without_injury" total="5663"/>
+        </crime>
+        <crime id="sexual_offences" total="587"/>
+        <crime id="robbery" total="239"/>
+        <crime id="theft_offences" total="25520">
+          <crime id="burglary" total="7481">
+            <crime id="domestic_burglary" total="3397"/>
+            <crime id="non_domestic_burglary" total="4084"/>
+          </crime>
+          <crime id="vehicle_offences" total="5130"/>
+          <crime id="theft_from_the_person" total="395"/>
+          <crime id="bicycle_theft" total="1344"/>
+          <crime id="shoplifting" total="4033"/>
+          <crime id="all_other_theft_offences" total="7137"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="9109"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="3706"/>
+        <crime id="possession_of_weapon_offences" total="270"/>
+        <crime id="public_order_offences" total="1773"/>
+        <crime id="miscellaneous_crimes_against_society" total="931"/>
+        <crime id="fraud" total="1555"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="sussex">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="14870">
+          <crime id="homicide" total="12"/>
+          <crime id="violence_with_injury" total="6985"/>
+          <crime id="violence_without_injury" total="7873"/>
+        </crime>
+        <crime id="sexual_offences" total="1593"/>
+        <crime id="robbery" total="648"/>
+        <crime id="theft_offences" total="46180">
+          <crime id="burglary" total="9607">
+            <crime id="domestic_burglary" total="3846"/>
+            <crime id="non_domestic_burglary" total="5761"/>
+          </crime>
+          <crime id="vehicle_offences" total="8231"/>
+          <crime id="theft_from_the_person" total="3199"/>
+          <crime id="bicycle_theft" total="2669"/>
+          <crime id="shoplifting" total="8351"/>
+          <crime id="all_other_theft_offences" total="14123"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="14015"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="4467"/>
+        <crime id="possession_of_weapon_offences" total="519"/>
+        <crime id="public_order_offences" total="2628"/>
+        <crime id="miscellaneous_crimes_against_society" total="1198"/>
+        <crime id="fraud" total="1860"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="thames_valley">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="19574">
+          <crime id="homicide" total="20"/>
+          <crime id="violence_with_injury" total="8425"/>
+          <crime id="violence_without_injury" total="11129"/>
+        </crime>
+        <crime id="sexual_offences" total="2159"/>
+        <crime id="robbery" total="1184"/>
+        <crime id="theft_offences" total="73547">
+          <crime id="burglary" total="15909">
+            <crime id="domestic_burglary" total="6805"/>
+            <crime id="non_domestic_burglary" total="9104"/>
+          </crime>
+          <crime id="vehicle_offences" total="14856"/>
+          <crime id="theft_from_the_person" total="3014"/>
+          <crime id="bicycle_theft" total="5651"/>
+          <crime id="shoplifting" total="13905"/>
+          <crime id="all_other_theft_offences" total="20212"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="17941"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="6953"/>
+        <crime id="possession_of_weapon_offences" total="731"/>
+        <crime id="public_order_offences" total="5290"/>
+        <crime id="miscellaneous_crimes_against_society" total="1646"/>
+        <crime id="fraud" total="4235"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="south_west">
+    <area id="avon_and_somerset">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="15895">
+          <crime id="homicide" total="13"/>
+          <crime id="violence_with_injury" total="8124"/>
+          <crime id="violence_without_injury" total="7758"/>
+        </crime>
+        <crime id="sexual_offences" total="1534"/>
+        <crime id="robbery" total="767"/>
+        <crime id="theft_offences" total="48160">
+          <crime id="burglary" total="11231">
+            <crime id="domestic_burglary" total="4889"/>
+            <crime id="non_domestic_burglary" total="6342"/>
+          </crime>
+          <crime id="vehicle_offences" total="9239"/>
+          <crime id="theft_from_the_person" total="1626"/>
+          <crime id="bicycle_theft" total="2812"/>
+          <crime id="shoplifting" total="10636"/>
+          <crime id="all_other_theft_offences" total="12616"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="15725"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="6726"/>
+        <crime id="possession_of_weapon_offences" total="499"/>
+        <crime id="public_order_offences" total="4964"/>
+        <crime id="miscellaneous_crimes_against_society" total="1258"/>
+        <crime id="fraud" total="1521"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="devon_and_cornwall">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="19670">
+          <crime id="homicide" total="10"/>
+          <crime id="violence_with_injury" total="10680"/>
+          <crime id="violence_without_injury" total="8980"/>
+        </crime>
+        <crime id="sexual_offences" total="2009"/>
+        <crime id="robbery" total="378"/>
+        <crime id="theft_offences" total="35192">
+          <crime id="burglary" total="8030">
+            <crime id="domestic_burglary" total="3334"/>
+            <crime id="non_domestic_burglary" total="4696"/>
+          </crime>
+          <crime id="vehicle_offences" total="6139"/>
+          <crime id="theft_from_the_person" total="1128"/>
+          <crime id="bicycle_theft" total="1286"/>
+          <crime id="shoplifting" total="7311"/>
+          <crime id="all_other_theft_offences" total="11298"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="15025"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="4509"/>
+        <crime id="possession_of_weapon_offences" total="416"/>
+        <crime id="public_order_offences" total="5390"/>
+        <crime id="miscellaneous_crimes_against_society" total="955"/>
+        <crime id="fraud" total="1322"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="dorset">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="6050">
+          <crime id="homicide" total="5"/>
+          <crime id="violence_with_injury" total="3574"/>
+          <crime id="violence_without_injury" total="2471"/>
+        </crime>
+        <crime id="sexual_offences" total="586"/>
+        <crime id="robbery" total="198"/>
+        <crime id="theft_offences" total="22027">
+          <crime id="burglary" total="5093">
+            <crime id="domestic_burglary" total="1833"/>
+            <crime id="non_domestic_burglary" total="3260"/>
+          </crime>
+          <crime id="vehicle_offences" total="4960"/>
+          <crime id="theft_from_the_person" total="633"/>
+          <crime id="bicycle_theft" total="1735"/>
+          <crime id="shoplifting" total="3722"/>
+          <crime id="all_other_theft_offences" total="5884"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="7111"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1497"/>
+        <crime id="possession_of_weapon_offences" total="165"/>
+        <crime id="public_order_offences" total="979"/>
+        <crime id="miscellaneous_crimes_against_society" total="350"/>
+        <crime id="fraud" total="439"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="gloucestershire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="4360">
+          <crime id="homicide" total="1"/>
+          <crime id="violence_with_injury" total="2599"/>
+          <crime id="violence_without_injury" total="1760"/>
+        </crime>
+        <crime id="sexual_offences" total="522"/>
+        <crime id="robbery" total="231"/>
+        <crime id="theft_offences" total="16754">
+          <crime id="burglary" total="4701">
+            <crime id="domestic_burglary" total="2192"/>
+            <crime id="non_domestic_burglary" total="2509"/>
+          </crime>
+          <crime id="vehicle_offences" total="3061"/>
+          <crime id="theft_from_the_person" total="366"/>
+          <crime id="bicycle_theft" total="1102"/>
+          <crime id="shoplifting" total="3261"/>
+          <crime id="all_other_theft_offences" total="4263"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="4854"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1646"/>
+        <crime id="possession_of_weapon_offences" total="134"/>
+        <crime id="public_order_offences" total="713"/>
+        <crime id="miscellaneous_crimes_against_society" total="381"/>
+        <crime id="fraud" total="655"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="wiltshire">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="6144">
+          <crime id="homicide" total="9"/>
+          <crime id="violence_with_injury" total="3421"/>
+          <crime id="violence_without_injury" total="2714"/>
+        </crime>
+        <crime id="sexual_offences" total="644"/>
+        <crime id="robbery" total="129"/>
+        <crime id="theft_offences" total="16776">
+          <crime id="burglary" total="4331">
+            <crime id="domestic_burglary" total="1265"/>
+            <crime id="non_domestic_burglary" total="3066"/>
+          </crime>
+          <crime id="vehicle_offences" total="3348"/>
+          <crime id="theft_from_the_person" total="402"/>
+          <crime id="bicycle_theft" total="755"/>
+          <crime id="shoplifting" total="3208"/>
+          <crime id="all_other_theft_offences" total="4732"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="5994"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1624"/>
+        <crime id="possession_of_weapon_offences" total="136"/>
+        <crime id="public_order_offences" total="892"/>
+        <crime id="miscellaneous_crimes_against_society" total="248"/>
+        <crime id="fraud" total="776"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="wales">
+    <area id="dyfed-powys">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="3401">
+          <crime id="homicide" total="5"/>
+          <crime id="violence_with_injury" total="2068"/>
+          <crime id="violence_without_injury" total="1328"/>
+        </crime>
+        <crime id="sexual_offences" total="376"/>
+        <crime id="robbery" total="24"/>
+        <crime id="theft_offences" total="6376">
+          <crime id="burglary" total="1349">
+            <crime id="domestic_burglary" total="444"/>
+            <crime id="non_domestic_burglary" total="905"/>
+          </crime>
+          <crime id="vehicle_offences" total="996"/>
+          <crime id="theft_from_the_person" total="60"/>
+          <crime id="bicycle_theft" total="174"/>
+          <crime id="shoplifting" total="1573"/>
+          <crime id="all_other_theft_offences" total="2224"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="3326"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="3464"/>
+        <crime id="possession_of_weapon_offences" total="146"/>
+        <crime id="public_order_offences" total="1219"/>
+        <crime id="miscellaneous_crimes_against_society" total="200"/>
+        <crime id="fraud" total="371"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="gwent">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="6301">
+          <crime id="homicide" total="5"/>
+          <crime id="violence_with_injury" total="3480"/>
+          <crime id="violence_without_injury" total="2816"/>
+        </crime>
+        <crime id="sexual_offences" total="504"/>
+        <crime id="robbery" total="178"/>
+        <crime id="theft_offences" total="16711">
+          <crime id="burglary" total="4646">
+            <crime id="domestic_burglary" total="1775"/>
+            <crime id="non_domestic_burglary" total="2871"/>
+          </crime>
+          <crime id="vehicle_offences" total="3654"/>
+          <crime id="theft_from_the_person" total="155"/>
+          <crime id="bicycle_theft" total="440"/>
+          <crime id="shoplifting" total="3310"/>
+          <crime id="all_other_theft_offences" total="4506"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="6374"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="2319"/>
+        <crime id="possession_of_weapon_offences" total="176"/>
+        <crime id="public_order_offences" total="1347"/>
+        <crime id="miscellaneous_crimes_against_society" total="418"/>
+        <crime id="fraud" total="267"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="north_wales">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="7924">
+          <crime id="homicide" total="11"/>
+          <crime id="violence_with_injury" total="4076"/>
+          <crime id="violence_without_injury" total="3837"/>
+        </crime>
+        <crime id="sexual_offences" total="858"/>
+        <crime id="robbery" total="135"/>
+        <crime id="theft_offences" total="16033">
+          <crime id="burglary" total="4635">
+            <crime id="domestic_burglary" total="1614"/>
+            <crime id="non_domestic_burglary" total="3021"/>
+          </crime>
+          <crime id="vehicle_offences" total="2496"/>
+          <crime id="theft_from_the_person" total="197"/>
+          <crime id="bicycle_theft" total="597"/>
+          <crime id="shoplifting" total="3566"/>
+          <crime id="all_other_theft_offences" total="4542"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="7229"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="1717"/>
+        <crime id="possession_of_weapon_offences" total="170"/>
+        <crime id="public_order_offences" total="1727"/>
+        <crime id="miscellaneous_crimes_against_society" total="439"/>
+        <crime id="fraud" total="352"/>
+      </other_crimes_against_society>
+    </area>
+    <area id="south_wales">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="13606">
+          <crime id="homicide" total="10"/>
+          <crime id="violence_with_injury" total="8563"/>
+          <crime id="violence_without_injury" total="5033"/>
+        </crime>
+        <crime id="sexual_offences" total="1198"/>
+        <crime id="robbery" total="396"/>
+        <crime id="theft_offences" total="42059">
+          <crime id="burglary" total="9130">
+            <crime id="domestic_burglary" total="3956"/>
+            <crime id="non_domestic_burglary" total="5174"/>
+          </crime>
+          <crime id="vehicle_offences" total="10208"/>
+          <crime id="theft_from_the_person" total="2056"/>
+          <crime id="bicycle_theft" total="1751"/>
+          <crime id="shoplifting" total="7857"/>
+          <crime id="all_other_theft_offences" total="11057"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="14271"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="5263"/>
+        <crime id="possession_of_weapon_offences" total="463"/>
+        <crime id="public_order_offences" total="3889"/>
+        <crime id="miscellaneous_crimes_against_society" total="944"/>
+        <crime id="fraud" total="1443"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="british_transport_police">
+    <area id="british_transport_police">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="6151">
+          <crime id="homicide" total="3"/>
+          <crime id="violence_with_injury" total="2093"/>
+          <crime id="violence_without_injury" total="4055"/>
+        </crime>
+        <crime id="sexual_offences" total="641"/>
+        <crime id="robbery" total="505"/>
+        <crime id="theft_offences" total="28102">
+          <crime id="burglary" total="529">
+            <crime id="domestic_burglary" total="2"/>
+            <crime id="non_domestic_burglary" total="527"/>
+          </crime>
+          <crime id="vehicle_offences" total="1526"/>
+          <crime id="theft_from_the_person" total="9116"/>
+          <crime id="bicycle_theft" total="5093"/>
+          <crime id="shoplifting" total="1853"/>
+          <crime id="all_other_theft_offences" total="9985"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="4761"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="3614"/>
+        <crime id="possession_of_weapon_offences" total="363"/>
+        <crime id="public_order_offences" total="6521"/>
+        <crime id="miscellaneous_crimes_against_society" total="912"/>
+        <crime id="fraud" total="400"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+  <region id="action_fraud">
+    <area id="action_fraud">
+      <victim_based_crime>
+        <crime id="violence_against_the_person" total="0">
+          <crime id="homicide" total="0"/>
+          <crime id="violence_with_injury" total="0"/>
+          <crime id="violence_without_injury" total="0"/>
+        </crime>
+        <crime id="sexual_offences" total="0"/>
+        <crime id="robbery" total="0"/>
+        <crime id="theft_offences" total="0">
+          <crime id="burglary" total="0">
+            <crime id="domestic_burglary" total="0"/>
+            <crime id="non_domestic_burglary" total="0"/>
+          </crime>
+          <crime id="vehicle_offences" total="0"/>
+          <crime id="theft_from_the_person" total="0"/>
+          <crime id="bicycle_theft" total="0"/>
+          <crime id="shoplifting" total="0"/>
+          <crime id="all_other_theft_offences" total="0"/>
+        </crime>
+        <crime id="criminal_damage_and_arson" total="0"/>
+      </victim_based_crime>
+      <other_crimes_against_society>
+        <crime id="drug_offences" total="0"/>
+        <crime id="possession_of_weapon_offences" total="0"/>
+        <crime id="public_order_offences" total="0"/>
+        <crime id="miscellaneous_crimes_against_society" total="0"/>
+        <crime id="fraud" total="150389"/>
+      </other_crimes_against_society>
+    </area>
+  </region>
+</crimes>

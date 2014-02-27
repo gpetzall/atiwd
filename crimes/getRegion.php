@@ -52,6 +52,11 @@ if (isset($_GET['regi'])) { // Region name.
 // Create a simple xml object for easy reading.
 $xml = simplexml_load_file($inputFilename);
 
+// If data was pulled from the main database, update the cache.
+if ($inputFilename == BASE_URI.'doc/crimes.xml')
+{
+	$xml->asXML($cacheFilename);
+}
 
 
 $region_element = $xml->xpath("/crimes/region[@id='$regi']"); // A little bit of XPATH grabbing all elements with GET's id value.

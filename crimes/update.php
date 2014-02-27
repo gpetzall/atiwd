@@ -136,8 +136,6 @@ if ($region_element instanceof SimpleXMLElement) // If a simple xml element was 
 					$region_element['total'] = $update;
 				}
 				
-				// NOTE: Updating the region element also updates the simple XML document ($xml).
-				$xml->asXML($outputFilename);
 				
 				// Display message.
 				echo $doc->saveXML();
@@ -195,7 +193,7 @@ if ($region_element instanceof SimpleXMLElement) // If a simple xml element was 
 				}
 				
 				// NOTE: Updating the region element also updates the simple XML document ($xml).
-				$xml->asXML($outputFilename);
+				
 				
 				break; // End of JSON block;
 				
@@ -204,6 +202,13 @@ if ($region_element instanceof SimpleXMLElement) // If a simple xml element was 
 				require_once('error.php');
 				exit;
 		} // End of XML/JSON switch.
+		
+		
+		// Save the update as well as update the cache.
+		$xml->asXML($outputFilename);		
+		$xml->asXML($cacheFilename);
+		
+		
 	} // End of update value if.
 	else
 	{ // No valid update request.

@@ -94,6 +94,7 @@ else
 
 
 <link rel='stylesheet' media='screen' href='css/main.css' />
+<link rel="shortcut icon" href="http://police.uk/static/img/favicon.ico"/>
 
 <script src="js/Chart.js"></script>
 <meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
@@ -200,6 +201,7 @@ foreach($xml->children() as $region)
 				<li><a href="https://github.com/gpetzall/atiwd" target="_blank">ATWD Git</a> (new tab)</li>
 				<li><a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/test/g2-petzall" target="_blank">Ben Argo's API test</a> (new tab)</li>
 				<li><a href="../6-2013/reset" target="_blank">Reset link</a>, if needed (new tab)</li>
+				<li><a href="http://www.police.uk/" target="_blank">Police.uk</a> (new tab)</li>
 			</ul>
 		</nav>
 	</section>
@@ -292,14 +294,14 @@ else // If NOT requesting visualisation: Show documentation.
 		<dt>Part 2.2.2 - Create are and sample data</dt>
 			<dd>XML response: <a href="../6-2013/post/south_west/wessex/hom:4-vwi:15-vwoi:25/xml">http://www.cems.uwe.ac.uk/~g2-petzall/.../post/south_west/wessex/hom:4-vwi:15-vwoi:25/xml</a></dd>
 			<dd>JSON response: <a href="../6-2013/post/south_west/wessex/hom:4-vwi:15-vwoi:25/json">http://www.cems.uwe.ac.uk/~g2-petzall/.../post/south_west/wessex/hom:4-vwi:15-vwoi:25/json</a></dd>
-			<dd><em><strong>Note: It's possible to add areas in other regions than the South West, but not multiples of the same area in one region.</strong></em></dd>
+			<dd><em><strong>Note: It is possible to add areas in other regions than the South West, but not multiples of the same area in one region.</strong></em></dd>
 			<dd class="source">Sources: <a href="../create.phps">create.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/create.php">Git</a>)</dd>
 			
 		<dt>Part 2.2.3 - Delete an area</dt>
 			<dd><em><strong>Note: Error is thrown if the specified area does not exist.</strong></em></dd>
 			<dd>XML response: <a href="../6-2013/delete/wessex/xml">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/delete/wessex/xml</a></dd>
 			<dd>JSON response: <a href="../6-2013/delete/wessex/json">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/delete/wessex/json</a></dd>
-			<dd><em><strong>Note: It's possible to remove any area. Also possible to specify which region to delete from.</strong></em></dd>
+			<dd><em><strong>Note: It is possible to remove ANY area. Also possible to specify which region to delete from.</strong></em></dd>
 			<dd>XML response: <a href="../6-2013/delete/wessex/xml">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/delete/south_west/wessex/xml</a></dd>
 			<dd>JSON response: <a href="../6-2013/delete/wessex/json">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/delete/south_west/wessex/json</a></dd>
 			<dd class="source">Sources: <a href="../delete.phps">delete.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/delete.php">Git</a>)</dd>
@@ -317,8 +319,9 @@ else // If NOT requesting visualisation: Show documentation.
 			<dd class="source">Sources: <a href="../doc/index.phps">index.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/doc/index.php">Git</a>)</dd>
 			
 		<dt>Part 4 - Caching</dt>
-			<dd><strong>Locally:</strong> Using the browser's JavaScript engine. Use the visualisation and see the config file (<a href="../includes/config.phps">PHPS</a>/<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/includes/config.php">Git</a>) for the code. </dd>
-			<dd></dd>
+			<dd><strong>Locally:</strong> Using the browser's JavaScript engine. Can be used in any API. (See the config file.)</dd>
+			<dd><strong>Server-side:</strong> The scripts create a cache xml file that loads if it's roughly as newly updated as the main database. If the main database is more updated, it loads it but also updates the cache. Not overly compatible with local cache (but nobody expected them to be).</dd>
+			<dd>Use the visualisation and see the config file (<a href="../includes/config.phps">PHPS</a>/<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/includes/config.php">Git</a>) for the main code. Each individual script also have functions relating to the server cache, such as checking for it and updating if the main database is more recently updated.</dd>
 			<!-- <dd class="source">Sources: <a href="../cache.phps">cache.phps</a> (<a href="">Git</a>)</dd> -->
 			
 		<dt>Other files</dt>
@@ -327,15 +330,10 @@ else // If NOT requesting visualisation: Show documentation.
 			<dd>Source file to create PHPS files - <a href="../source.phps">source.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/source.php">Git</a>)</dd>
 	</dl> <!-- <dd></dd> -->
 	
-
-	
-	
 <?php
 } // End of visualisation/documentation IF.
 ?>
-	
 </div>
-
 
 <footer>
 	<div class="inner">

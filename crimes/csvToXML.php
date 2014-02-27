@@ -45,7 +45,7 @@
 require_once (__DIR__ .'/includes/config.php');
 
 // Change input file from standard in config.
-$inputFilename = 'doc/input.csv';
+$inputFilename = BASE_URI.'doc/input.csv';
 
 // Open CSV to read.
 $inputFile = fopen($inputFilename, 'rt');

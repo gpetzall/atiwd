@@ -59,6 +59,13 @@ $doc->formatOutput = true;
 // Create a simple xml object for easy reading.
 $xml = simplexml_load_file($inputFilename);
 
+// If data was pulled from the main database, update the cache.
+if ($inputFilename == BASE_URI.'doc/crimes.xml')
+{
+	$xml->asXML($cacheFilename);
+}
+
+
 
 switch ($response)
 {
@@ -71,7 +78,7 @@ switch ($response)
 		$node = $doc->createElement('response');
 		$node->setAttribute('timestamp',time()); // Add 'nix timestamp.
 		$root = $doc->appendChild($node); // Add it to the DOM.
-
+		
 		// Add crimes.
 		$node = $doc->createElement('crimes');
 		$node->setAttribute('year',"6-2013"); // Set year attribute.

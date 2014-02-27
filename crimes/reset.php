@@ -35,8 +35,10 @@ $inputFilename = 'doc/backup.xml';
 // Create a simple XML object with the backup file.
 $xml = simplexml_load_file($inputFilename);
 
-// Save the simple XML object back as file.
+// Save the simple XML object back as file and update the cache.
 $xml->asXml($outputFilename);
+$xml->asXml($cacheFilename);
 ?>
 
 <p>The file <strong><?php echo $outputFilename ?></strong> has been reset.</p>
+<p>The file <strong><?php echo $cacheFilename ?></strong> has been reset.</p>

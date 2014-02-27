@@ -301,7 +301,11 @@ if (!empty($area_element))
 		
 		// Delete the specified area.
 		unset($area_element[0],$area_element);
+		
+		// Save to file and cache.
 		$xml->asXML($outputFilename);
+		$xml->asXML($cacheFilename);
+		
 	} // End if XML/JSON.
 
 } // End of if the area exists.
