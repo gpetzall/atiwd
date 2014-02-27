@@ -224,64 +224,38 @@ else // If NOT requesting visualisation: Show documentation.
 	</style>
 	
 	<h2>Initial challenges</h2>
-	<!--
-	<p>Not being the most skilled of programmers, there was plenty of challenges in this assignment. The first was the overly “dirty” XLSX crime statistics from the source and getting used to coding again. It took a lot of time just to formulate an initial plan of action for the coding and for the XML structure on paper (as a visual learner) it wasn’t so much hard as it was time-consuming and also requiring a lot of reading online. The spec seemed to allow editing the document, but I decided against it as it probably would have taken a long time anyway (sub-category crimes etc.) and no further code insight.</p>
+	
+	<p>Not being the most skilled of programmers, there was plenty of challenges in this assignment. The first was the overly "dirty" XLSX crime
+		statistics from the source and getting used to coding again. It took a lotof time just to formulate an initial plan of action for the coding and
+		for the XML structure on paper (as a visual learner
+		
+		(notes: <a href="images/xml1.jpg">1</a>, <a href="images/xml2.jpg">2</a>, <a href="images/csvtoxml1.jpg">3</a>, <a href="images/csvtoxml1.jpg">4</a>))
+		
+		it wasn’t so much hard as it was time-consuming and also required a lot of reading online.
+		The spec seemed to allow editing the document, but I decided against it as it probably would have taken a long time anyway (sub-category crimes etc.) and no further code insight.</p>
 	
 	<h2>The DOM</h2>
-	<p>The second, and perhaps greatest, challenge was with XML manipulation. Initial attempts with PHP’s DOM failed because it was hard to visualise it. Reading the instructions and writing down how it works made it possible to make DOM-coding a lot easier, “seeing” how it fits like a puzzle to my inner eye.</p>
+	<p>The second, and perhaps greatest, challenge was with XML manipulation. Initial attempts with PHP's DOMdocument failed because it was hard to visualise it. Reading the instructions and writing down how it works made it possible to make DOM-coding a lot easier, "seeing" how it fits like a puzzle to my inner eye.</p>
 	
 	<h2>XML issues</h2>
-	<p>SimpleXML and XPATH usage was easier, but later stages of the project required deleting nodes (for “[POST]” and “[DELETE]”), which halted the development for many hours. It took a long time to understand just how “sticky” SimpleXML is; having to unset the first array item and then unsetting the variable. This is not really that hard, but it is also not very semantic.</p>
+	<p>SimpleXML and XPath usage was easier, but later stages of the project required deleting nodes (for "[POST]" and "[DELETE]"), which halted the development for many hours. It took a long time to understand just how "sticky" SimpleXML is; having to unset the first array item and then unsetting the variable. This is not really that hard, but it is also not very semantic.</p>
 	<p>JSON looked like a challenge at first, but really is not. It has been a pleasure to work with and great to be introduced to.</p>
 	
-	<h2>.HTACCESS</h2>
-	<p>I have had previous problems with HTACCESS and I struggle with REGEX. I do not feel I learned much other than getting used to HTACCESS again, but it took a lot of time and research to get especially the “[POST]” requirement working, with its odd URL. However, getting used to it again is very useful.</p>
+	<h2>.htaccess</h2>
+	<p>I have had previous problems with .htaccess and I struggle with regular expressions (RegEx). I do not feel I learned much other than getting used to .htaccess again, but it took a lot of time and research to get especially the "[POST]" requirement working, with its odd URL. However, getting used to it again is very useful.</p>
 	
 	<h2>Learning outcomes</h2>
 	<p>Each of the challenges I faced have brought me confidence in my craft skill of programming. Managing to (more or less) learn all of the functionality for the assignment in the Christmas break was the main reason for this confidence, especially since we had not touched on much of these skills in lectures. My most treasured learning experience from this assignment is knowing I actually can code if I put my mind to it.</p>
 	
 	<h2>Highlights</h2>
-	<p>The experiences that meant most was the code not required in the spec. Making the reset button was the first and making the “[POST]” function able to add areas in any region, replacing the old item was the biggest and most satisfying.</p>
+	<p>The experiences that meant most was the code not required in the spec. Making the reset button was the first and making the "[POST]" function able to add areas in any region, replacing the old item was the biggest and most satisfying.</p>
 	
 	<h2>Other reflections</h2>
+	<p>Please compare the HTML design with <a href="http://www.police.uk/">Police.uk</a>.</p>
 	<p>This assignment may have had its flaws and caused some frustration, especially in terms of its sheer size, source material, specification ambiguity, but it honestly has been enormously helpful to improve my coding skills. Both for my Digital Media project but also looking for jobs after university.</p>
 	<p>This frustration may be my everyday life after university, but let us hope this is not the case. Regardless: I am now more prepared.</p>
-	-->
 	
-	<style>
-dl {
-	margin: 30px 0 50px 0;
-}
-
-dt {
-	margin: 30px 0 5px 0;
-	font-size: 110%;
-	font-weight: bold;
-	font-style: italic;
-}
-
-dt:first-of-type {
-	margin-top: 0px;
-}
-
-dd {
-	margin: 3px 0 3px 40px;
-}
-
-dd.source {
-	margin-top: 15px;
-	font-size: 115%;
-	font-weight: bold;
-	font-style: italic;
-	color: #6d2389;
-}
-
-dd.source a {
-	font-size: 90%;
-	font-weight: normal;
-}
-
-	</style>
+	
 	
 	<h2>Assignment task examples and source files</h2>
 	<dl>
@@ -294,8 +268,7 @@ dd.source a {
 			<dd>CSV: <a href="input.csv">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/doc/input.csv</a></dd>
 			<dd><em><strong>Converter: <a href="../csvToXML.php">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/csvToXML.php</a></strong></em></dd>
 			<dd>Resulting XML: <a href="backup.xml">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/doc/backup.xml</a></dd>
-			
-			<dd class="source">Sources: <a href="">csvToXML.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/csvToXML.php">Git</a>)</dd>
+			<dd class="source">Sources: <a href="../csvToXML.phps">csvToXML.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/csvToXML.php">Git</a>)</dd>
 		
 		<dt>Part 1.2 - Validation</dt>
 			<dd><em><strong>Schema validation XSD: <a href="schema.xsd">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/doc/schema.xsd</a></strong></em></dd>
@@ -304,27 +277,23 @@ dd.source a {
 		<dt>Part 2.1.1 - Recorded crimes by region</dt>
 			<dd>XML response: <a href="../6-2013/xml">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/xml</a></dd>
 			<dd>JSON response: <a href="../6-2013/json">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/json</a></dd>
-			
-			<dd class="source">Sources: <a href="">get.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/get.php">Git</a>)</dd>
+			<dd class="source">Sources: <a href="../get.phps">get.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/get.php">Git</a>)</dd>
 			
 		<dt>Part 2.1.2 - Recorded crimes for specific region</dt>
 			<dd>XML response: <a href="../6-2013/south_west/xml">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/south_west/xml</a></dd>
 			<dd>JSON response: <a href="../6-2013/south_west/json">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/south_west/json</a></dd>
-			
-			<dd class="source">Sources: <a href="">getRegion.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/getRegion.php">Git</a>)</dd>
+			<dd class="source">Sources: <a href="../getRegion.phps">getRegion.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/getRegion.php">Git</a>)</dd>
 			
 		<dt>Part 2.2.1 - Update total for BTP or region</dt>
 			<dd>XML response: <a href="../6-2013/put/british_transport_police:51970/xml">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/put/british_transport_police:51970/xml</a></dd>
 			<dd>JSON response: <a href="../6-2013/put/british_transport_police:51970/json">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/put/british_transport_police:51970/json</a></dd>
-			
-			<dd class="source">Sources: <a href="">update.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/update.php">Git</a>)</dd>
+			<dd class="source">Sources: <a href="../update.phps">update.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/update.php">Git</a>)</dd>
 			
 		<dt>Part 2.2.2 - Create are and sample data</dt>
 			<dd>XML response: <a href="../6-2013/post/south_west/wessex/hom:4-vwi:15-vwoi:25/xml">http://www.cems.uwe.ac.uk/~g2-petzall/.../post/south_west/wessex/hom:4-vwi:15-vwoi:25/xml</a></dd>
 			<dd>JSON response: <a href="../6-2013/post/south_west/wessex/hom:4-vwi:15-vwoi:25/json">http://www.cems.uwe.ac.uk/~g2-petzall/.../post/south_west/wessex/hom:4-vwi:15-vwoi:25/json</a></dd>
 			<dd><em><strong>Note: It's possible to add areas in other regions than the South West, but not multiples of the same area in one region.</strong></em></dd>
-			
-			<dd class="source">Sources: <a href="">create.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/create.php">Git</a>)</dd>
+			<dd class="source">Sources: <a href="../create.phps">create.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/create.php">Git</a>)</dd>
 			
 		<dt>Part 2.2.3 - Delete an area</dt>
 			<dd><em><strong>Note: Error is thrown if the specified area does not exist.</strong></em></dd>
@@ -333,8 +302,7 @@ dd.source a {
 			<dd><em><strong>Note: It's possible to remove any area. Also possible to specify which region to delete from.</strong></em></dd>
 			<dd>XML response: <a href="../6-2013/delete/wessex/xml">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/delete/south_west/wessex/xml</a></dd>
 			<dd>JSON response: <a href="../6-2013/delete/wessex/json">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/delete/south_west/wessex/json</a></dd>
-			
-			<dd class="source">Sources: <a href="">delete.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/delete.php">Git</a>)</dd>
+			<dd class="source">Sources: <a href="../delete.phps">delete.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/delete.php">Git</a>)</dd>
 		
 		<dt>Part 2.3 - Error codes, a few examples</dt>
 			<dd>Also see the comments in the error.php file. These are caught differently; balancing HTTP spec and assignment spec.</dd>
@@ -342,22 +310,21 @@ dd.source a {
 			<dd>404 - Non-existing region: <a href="../6-2013/narnia/xml">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/narnia/xml</a></dd>
 			<dd>404 - Non-existing area: <a href="../6-2013/delete/veryoddplace/xml">http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/delete/veryoddplace/xml</a></dd>
 			<dd>404 - Non-existing update value: <a href="../6-2013/put/british_transport_police:/xml">http://www.cems.uwe.ac.uk/~g2-petzall/.../6-2013/put/british_transport_police:/xml</a></dd>
-			
-			<dd class="source">Sources: <a href="">error.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/error.php">Git</a>)</dd>
+			<dd class="source">Sources: <a href="../error.phps">error.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/error.php">Git</a>)</dd>
 		
 		<dt>Part 3 - Visualisation</dt>
 			<dd>Please select any region in the right hand side menu.</dd>
-			<dd class="source">Sources: <a href="">index.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/doc/index.php">Git</a>)</dd>
+			<dd class="source">Sources: <a href="../doc/index.phps">index.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/doc/index.php">Git</a>)</dd>
 			
 		<dt>Part 4 - Caching</dt>
-			<dd>Goes here</dd>
-			<dd class="source">Sources: <a href="">cache.phps</a> (<a href="">Git</a>)</dd>
+			<dd><strong>Locally:</strong> Using the browser's JavaScript engine. Use the visualisation and see the config file (<a href="../includes/config.phps">PHPS</a>/<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/includes/config.php">Git</a>) for the code. </dd>
+			<dd></dd>
+			<!-- <dd class="source">Sources: <a href="../cache.phps">cache.phps</a> (<a href="">Git</a>)</dd> -->
 			
 		<dt>Other files</dt>
-			<dd>.htaccess in all its glory - <a href="">config.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/.htaccess">Git</a>)</dd>
-			<dd>Config file with minor settings - <a href="">config.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/includes/config.php">Git</a>)</dd>
-			<dd>Reset file to remove custom data - <a href="">reset.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/reset.php">Git</a>)</dd>
-			<dd>Source file to create PHPS files - <a href="">source.phps</a> (<a href="">Git</a>)</dd>
+			<dd>.htaccess in all its glory - <a href="https://github.com/gpetzall/atiwd/blob/master/crimes/.htaccess">Github only</a></dd>
+			<dd>Reset file to remove custom data - <a href="../reset.phps">reset.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/reset.php">Git</a>)</dd>
+			<dd>Source file to create PHPS files - <a href="../source.phps">source.phps</a> (<a href="https://github.com/gpetzall/atiwd/blob/master/crimes/source.php">Git</a>)</dd>
 	</dl> <!-- <dd></dd> -->
 	
 

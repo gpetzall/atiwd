@@ -16,7 +16,12 @@
  * 
  * 
  * Pages used as help to make this code:
- * - None yet
+ * 
+ * Browser cache with API and header sending
+ * http://blog.httpwatch.com/2009/08/07/ajax-caching-two-important-facts/comment-page-1/
+ * http://uk1.php.net/manual/en/function.header.php
+ * http://uk1.php.net/filemtime
+ * [Accessed 2014-02-27]
  * 
 */
 
@@ -59,13 +64,17 @@ if ($debug == TRUE)
 }
 
 
+// Caches the XML file (though hardly needed) the browser's JavaScript engine stores
+// it until there is a newer version available on the server. Useful for any API,
+// demonstrated in the visualisation.
+header('last-modified:'.date('r', filemtime(BASE_URI.'doc/crimes.xml')));
+
+
 
 // Determine file locations.
 $inputFilename = 'doc/crimes.xml'; // File that is used for the script (one exception).
 $outputFilename = 'doc/crimes.xml'; // To create the file and also for any database edits.
 $backupFilename = 'doc/backup.xml'; // To create a fresh, unedited, backup.
-
-
 
 
 
