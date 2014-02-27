@@ -4,7 +4,7 @@
  * 
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-15
- * Modified: 2014-01-20
+ * Modified: 2014-02-27
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course

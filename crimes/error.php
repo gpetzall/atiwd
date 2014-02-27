@@ -4,7 +4,7 @@
  * 
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-17
- * Modified: 2014-01-20
+ * Modified: 2014-02-27
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -19,6 +19,10 @@
  * opposed to the "501 - Not Implemented" specified in HTTP/1.1 by R. Fielding et.
  * al. (1999) http://www.w3.org/Protocols/rfc2616/rfc2616.html [accessed 2014-01-17].
  * 
+ * Please also note that this code CAN differentiate between different errors!
+ * A compromise between using 600 errors as suggested in the assignment spec (but not
+ * endorsed by the HTTP spec) and following standards is that they are cought but
+ * converted to 404s where appropriate in this script.
  * 
  * Pages used as help to make this code:
  * - None yet
@@ -53,19 +57,33 @@ if (isset($_GET['err']) || isset($err)) // Error code grabbed, or provided by ot
 			break;
 		
 		case 601:
-			$err_msg = 'URL pattern error: No response (XML/JSON) provided';
+			// $err_msg = 'URL pattern error: No response (XML/JSON) provided';
+			$err_msg = 'Not Found';
+			$err = 404;
 			break;
 		
 		case 602:
-			$err_msg = 'URL pattern error: No such region';
+			// $err_msg = 'URL pattern error: No such region';
+			$err_msg = 'Not Found';
+			$err = 404;
 			break;
-		
+				
 		case 603:
-			$err_msg = 'URL pattern error: No area specified';
+			// $err_msg = 'URL pattern error: No area specified';
+			$err_msg = 'Not Found';
+			$err = 404;
 			break;
 			
 		case 604:
-			$err_msg = 'URL pattern error: No such area';
+			// $err_msg = 'URL pattern error: No such area';
+			$err_msg = 'Not Found';
+			$err = 404;
+			break;
+			
+		case 605:
+			// $err_msg = 'URL pattern error: No update amount set';
+			$err_msg = 'Not Found';
+			$err = 404;
 			break;
 			
 		default:
@@ -99,21 +117,6 @@ else // No error code.
 {
 	echo 'Error: No error received.';
 }
-
-
-
-
-// Build XML here!!!
-
-
-
-
-
-
-
-
-
-
 
 
 ?>

@@ -4,7 +4,7 @@
  * 
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-10
- * Modified: 2014-01-20
+ * Modified: 2014-02-27
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -360,7 +360,9 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 		} // Is there xml or json?
 		else // If no xml/json was specified.
 		{
-			echo 'No XML or JSON request';
+			$_GET['err'] = 601; // 'URL pattern error: No response (XML/JSON) provided'
+			require_once('error.php');
+			exit;
 		}
 	}
 	else // If no area was provided.

@@ -4,7 +4,7 @@
  * 
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2013-12-16
- * Modified: 2014-01-20
+ * Modified: 2014-02-27
  *
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -35,6 +35,10 @@
  * http://www.w3schools.com/php/func_string_strtolower.asp
  * http://uk3.php.net/str_replace
  * [Accessed on 2014-01-07]
+ * 
+ * Automatically validate from schema (Ben Argo)
+ * https://github.com/benargo/atwd/blob/master/data/upload.post.php
+ * [Accessed on 2014-02-27]
 */
 
 // Run configuration.
@@ -274,22 +278,26 @@ while (($row = fgetcsv($inputFile,1024,",")) !== FALSE)
 	
 } // End of main while loop.
 
-echo $doc->saveXML();
 
-
+// Put it in a variable
 $save_xml = $doc->saveXML();
 
-// Save the database output.
-$file = fopen($outputFilename, "w");
-fwrite($file, $save_xml);
-fclose($file);
-
-// Save the database backup copy.
-$file = fopen($backupFilename, "w");
-fwrite($file, $save_xml);
-fclose($file);
-
+// Validate before saving (see references)
+if($doc->schemaValidate(__DIR__.'/doc/schema.xsd'))
+{
+	file_put_contents(__DIR__.'/doc/backup.xml', $save_xml);
+	file_put_contents(__DIR__.'/doc/crimes.xml', $save_xml);
 ?>
 <p>The CSV file <strong>"<?php echo $inputFilename; ?>"</strong> was parsed into XML.</p>
+<p>The XML file was also successfully validated with the accompanying <a href="doc/schema.xsd">XSD schema</a>.</p>
 <p>Download the output file <a href="doc/backup.xml">here</a>.</p>
 <p>The file was also saved for edits in other parts of the assignment <a href="doc/crimes.xml">here</a>.</p>
+<?php
+}
+else
+{
+	echo 'Error validating the XML';
+	print_r($doc->saveXML());
+	exit;
+}
+?>

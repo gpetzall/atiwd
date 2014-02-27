@@ -9,15 +9,19 @@
 # 
 # Explanations
 # http://stackoverflow.com/questions/12551382/what-does-1-qsa-l-mean-in-my-htaccess-file
-# [Acessed 2014-01-21]
+# [Accessed 2014-01-21]
 # 
 # IfModule
 # http://stackoverflow.com/questions/17636382/rewriteengine-on-in-ifmodule-mod-rewrite-c-every-time
-# [Acessed 2014-01-21]
+# [Accessed 2014-01-21]
 #
 # Error documents
 # http://www.javascriptkit.com/howto/htaccess2.shtml
 # [Accessed 2014-01-21]
+# 
+# PHPs generator by Ben Argo
+# http://www.cems.uwe.ac.uk/~b2-argo/resources/source.php
+# [Accessed 2014-02-27]
 # 
 
 
@@ -32,6 +36,9 @@ ErrorDocument 501 /~g2-petzall/atwd/crimes/error.php?err=404
 	
 	RewriteBase /~g2-petzall/atwd/crimes/
 	
+	# PHPs generator
+	RewriteRule ^(.*\.php)s$ source.php?file=$1 [L]
+	
 	# 2.2.2 Adding new area; three or less crime types:
 	RewriteRule ^6-2013/post/(\w+)/(\w+)/(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)/(xml|json)$		create.php?regi=$1&area=$2&$3=$4&$5=$6&$7=$8&response=$9 [L]
 	RewriteRule ^6-2013/post/(\w+)/(\w+)/(hom|vwi|vwoi):(\d+)-(hom|vwi|vwoi):(\d+)/(xml|json)$		create.php?regi=$1&area=$2&$3=$4&$5=$6&response=$7 [L]
@@ -44,12 +51,16 @@ ErrorDocument 501 /~g2-petzall/atwd/crimes/error.php?err=404
 	
 	# 2.2.1 Updating the total of a region:
 	RewriteRule ^6-2013/put/(\w+):(\d+)/(xml|json)$		update.php?regi=$1&update=$2&response=$3 [L]
+	RewriteRule ^6-2013/put/(\w+):/(xml|json)$		error.php?err=605 [L]
+	RewriteRule ^6-2013/put/(\w+):(\d+)/(\w+)$		error.php?err=601 [L]
 	
 	# 2.1.2 Get crimes for specific region: 
 	RewriteRule ^6-2013/(\w+)/(xml|json)$		getRegion.php?regi=$1&response=$2 [L]
+	RewriteRule ^6-2013/(\w+)/(\w+)$		error.php?err=601 [L]
 	
 	# 2.1.1 Get totals by region + England/Wales:
 	RewriteRule ^6-2013/(xml|json)$		get.php?response=$1 [L]
+	RewriteRule ^6-2013/(\w+)$		error.php?err=601 [L]
 	
 	# Resetting the XML database:
 	RewriteRule ^6-2013/reset/$		reset.php [L]
@@ -59,7 +70,7 @@ ErrorDocument 501 /~g2-petzall/atwd/crimes/error.php?err=404
 	RewriteRule ^doc/index.html$		doc/index.php [L]
 	RewriteRule ^doc/$		doc/index.php [L]
 	
-	# Errors
+	# Other Errors
 	# RewriteRule ^(.*)$		error.php?err=501 [L]
 	
 	

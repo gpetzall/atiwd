@@ -4,7 +4,7 @@
  * 
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-09
- * Modified: 2014-01-20
+ * Modified: 2014-02-27
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -200,29 +200,25 @@ if ($region_element instanceof SimpleXMLElement) // If a simple xml element was 
 				break; // End of JSON block;
 				
 			default: // No XML or JSON in URL.
-				?><p>This page only works with the right URLs (the region is valid, there a valid update request, but no proper data response requested (XML/JSON)).
-				Try making an <a href="update.php?response=xml&regi=north_west&update=1000">North West XML Total:1000</a> or
-				<a href="update.php?response=json&regi=north_west&update=1000">North West JSON Total:1000</a> request instead.</p><?php
-			break;	
-			
-	
+				$_GET['err'] = 601; // 'URL pattern error: No response (XML/JSON) provided'
+				require_once('error.php');
+				exit;
 		} // End of XML/JSON switch.
 	} // End of update value if.
 	else
 	{ // No valid update request.
-		?><p>This page only works with the right URLs (the region is valid, but there was no update request). Try making an
-		<a href="update.php?response=xml&regi=north_west&update=1000">North West XML Total:1000</a> or
-		<a href="update.php?response=json&regi=north_west&update=1000">North West JSON Total:1000</a> request instead.</p><?php
-		
-		print_r($_GET);
+		$_GET['err'] = 605; // 'URL pattern error: No update amount set'
+		require_once('error.php');
+		exit;
 		
 	}// Final end of update value if.
 	
 } // End of simple XML element if.
 else
 {
-	?><p>This page only works with the right URLs (the region is at least not valid). Try making an <a href="update.php?response=xml&regi=north_west&update=1000">North West XML Total:1000</a> or
-	<a href="update.php?response=json&regi=north_west&update=1000">North West JSON Total:1000</a> request instead.</p><?php
+	$_GET['err'] = 601; // 'URL pattern error: No response (XML/JSON) provided'
+	require_once('error.php');
+	exit;
 
 } // Proper end of simple XML element if.
 ?>

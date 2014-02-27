@@ -4,7 +4,7 @@
  * 
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-08
- * Modified: 2014-01-20
+ * Modified: 2014-02-27
  * 
  * Script made for the Advanced Topics in Web Development (UFCEWT-20-3) at the
  * University of the West of England in the years 2013-2014. This is part B1 course
@@ -261,9 +261,9 @@ switch ($response)
 		
 		break; // End of JSON block.
 		
-	default:
-		?><p>This page only works with the right URLs. Try making an <a href="get.php?response=xml">XML</a> or <a href="get.php?response=json">JSON</a> request instead.</p><?php
-		
-		break;
+	default: // If no XML/JSON
+		$_GET['err'] = 601; // 'URL pattern error: No response (XML/JSON) provided'
+		require_once('error.php');
+		exit;
 }
 ?>

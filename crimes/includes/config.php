@@ -4,7 +4,7 @@
  * 
  * Author: Gunnar Petzall (UWE no: 10005826) (gpetzall@gmail.com)
  * Created: 2014-01-17
- * Modified: 2014-01-17
+ * Modified: 2014-02-26
  * 
  * Configuration file made for the Advanced Topics in Web Development (UFCEWT-20-3) at
  * the University of the West of England in the years 2013-2014. This is part B1 course
@@ -16,10 +16,7 @@
  * 
  * 
  * Pages used as help to make this code:
- * 
- * headline:
- * 
- * [Accessed 2014-01-17]
+ * - None yet
  * 
 */
 
