@@ -14,7 +14,11 @@
  * types of crimes (Homicide, Violence with injury, Violence without injury) in the
  * "crimes.xml" file at http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/doc/
  * and display the new crime totals for each crime, the area and the region.
- * Unspecified data is assumed to be 0.
+ * Unspecified data is assumed to be 0. If there is already an area of that name in
+ * the region, it is removed before the new area is added.
+ * 
+ * NOTE: This script can create one area of a particular name in EACH region, if so
+ * specified.
  * 
  * 
  * Pages used as help to make this code:
@@ -361,12 +365,17 @@ if (!empty($region_element)) // If the return was not empty (checks if the regio
 	}
 	else // If no area was provided.
 	{
-		echo "YES - Region \nNO - Area \n";
+		$_GET['err'] = 603; // 'URL pattern error: No area specified'
+		require_once('error.php');
+		exit;
 	} // End of area if
 }
 else // If no valid region was provided.
 {
-	echo "NO - Region \n";
+	$_GET['err'] = 602; // 'URL pattern error: No such region'
+	require_once('error.php');
+	exit;
+	
 } // End of region if.
 
 ?>

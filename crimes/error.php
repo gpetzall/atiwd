@@ -11,18 +11,17 @@
  * component, dealing with part "2.3".
  * 
  * The script receives an error code via .htaccess redirect and displays an error
- * and its description in XML format.
+ * and its description in XML format. It's also used directly by other php files by
+ * setting the $_GET['err'] variable manually and including it to produce an error
+ * message.
  * 
  * Please note that the catch-all is 501 as per the assignment specification; as
- * opposed to the "501 - Not Implemented" specified in HTTP/1.1 by R. Fielding et
- * al (1999) http://www.w3.org/Protocols/rfc2616/rfc2616.html [accessed 2014-01-17].
+ * opposed to the "501 - Not Implemented" specified in HTTP/1.1 by R. Fielding et.
+ * al. (1999) http://www.w3.org/Protocols/rfc2616/rfc2616.html [accessed 2014-01-17].
  * 
  * 
  * Pages used as help to make this code:
- * 
- * Headline:
- * 
- * [Accessed 2014-01-17]
+ * - None yet
  * 
 */
 
@@ -30,7 +29,7 @@
 require_once (__DIR__ .'/includes/config.php');
 
 
-if (isset($_GET['err'])) // Error code grabbed?
+if (isset($_GET['err']) || isset($err)) // Error code grabbed, or provided by other document?
 {
 	$err = $_GET['err'];
 	
@@ -64,13 +63,18 @@ if (isset($_GET['err'])) // Error code grabbed?
 		case 603:
 			$err_msg = 'URL pattern error: No area specified';
 			break;
-		
+			
+		case 604:
+			$err_msg = 'URL pattern error: No such area';
+			break;
+			
 		default:
 			$err = 501;
 			$err_msg = 'URL pattern not recognised';
 			break;	
 	} // End of error switch.
 	
+	http_response_code($err);
 	// Create a new DOM document with pretty formatting.
 	$doc = new DomDocument();
 	$doc->formatOutput = true;

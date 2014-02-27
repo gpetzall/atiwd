@@ -104,58 +104,6 @@ header#main_header {
 	background-color: #f0f0f0;
 }
 
-div#main_content {
-	width: 1200px;
-	min-height: 500px;
-	margin: 0 auto;
-	padding: 0 12px 0 8px;
-	background-color: #ffffff;
-}
-
-/* div#main_content div.inner {
-	
-} */
-
-
-
-section#navigation {
-	position: relative;
-	overflow: visible;
-	float: right;
-	width: 260px;
-	height: 100%;
-}
-
-nav#get {
-	position:absolute;
-	overflow: auto;
-	width: 240px;
-	min-height: 200px;
-	padding: 20px;
-	background-color: #ffffff;
-	right: 3px;
-	top: -191px;
-}
-
-nav#get h2 {
-	margin: 0 0 20px 0;
-	font-size: 21px;
-	color: #000000;
-}
-
-nav#get ul {
-	margin: 0 0 40px 0;
-	padding: 0;
-	list-style: none;
-}
-
-nav#get ul li {
-	margin: 0 0 9px 0;
-	padding: 0 0 5px 0;
-}
-
-
-
 header#main_header div.inner {
 	overflow: auto;
 	width: 790px;
@@ -187,7 +135,103 @@ p.intro {
 	font-size: 21px;
 }
 
+div#main_content {
+	width: 910px;
+	min-height: 500px;
+	margin: 0 auto;
+	padding: 0 280px 0 10px;
+	background-color: #ffffff;
+}
+
+section#navigation {
+	position: relative;
+	overflow: visible;
+	float: right;
+	width: 20px;
+	height: 20px;
+}
+
+nav#get {
+	position:absolute;
+	overflow: auto;
+	width: 240px;
+	min-height: 200px;
+	padding: 20px;
+	background-color: #ffffff;
+	right: -277px;
+	top: -191px;
+}
+
+div#main_content nav#get h2 {
+	margin: 0 0 20px 0;
+	padding: 0;
+	font-size: 21px;
+}
+
+nav#get ul {
+	margin: 0 0 40px 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav#get ul li {
+	margin: 0 0 9px 0;
+	padding: 0 0 5px 0;
+}
+
+canvas#canvas1 {
+	margin: 20px 0 0 0;
+}
+
+canvas#canvas2 {
+	float: right;
+	clear: right;
+	margin: 20px 30px 0 0;
+}
+
+section.charts {
+	overflow: auto;
+	clear: right;
+	float: right;
+	min-width: 100px;
+	min-height: 100px;
+	margin: 10px 32px 30px 0;
+	/* background-color: #aaaaaa; */
+}
+
+p.legend {
+	width: 330px;
+	margin: 0;
+	padding: 10px;
+	color: #ffffff;
+	text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.9);
+}
+
+p.legend.item0 {background-color: #1b4080;}
+p.legend.item1 {background-color: #3d5c93;}
+p.legend.item2 {background-color: #1c3763;}
+p.legend.item3 {background-color: #899cbd;}
+p.legend.item4 {background-color: #102850;}
+p.legend.item5 {background-color: #6b7990;}
+p.legend.item6 {background-color: #d2dae6;}
+
+p.legend.total {
+	font-weight: bold;
+	color: #000000;
+	text-shadow: none;
+}
+
+div#main_content h2 {
+	width: 75%;
+	margin-top: 0;
+	padding: 58px 0 0;
+	font-size: 130%;
+	
+}
+
+
 footer {
+	clear: both;
 	width: 100%;
 	height: 182px;
 	border-top: 1px solid #DCDCDC;

@@ -8,13 +8,38 @@
  * 
  * Main page for the assignment of Advanced Topics in Web Development (UFCEWT-20-3)
  * at the University of the West of England in the years 2013-2014. This is part B1
- * course component, dealing with part "3", visualisation, and "5", documentation.
+ * course component, dealing with part "3.0.0", visualisation, and "5.0.0", documentation.
  * 
  * Pages used as help to make this code:
  * 
  * Newline types (\r\n)
  * http://www.go4expert.com/articles/difference-n-rn-t8021/
  * [Accessed 2014-02-26]
+ * 
+ * jQuery repository, using 1.9.0
+ * https://developers.google.com/speed/libraries/devguide?hl=en#jquery
+ * [Accessed 2014-02-26]
+ * 
+ * jQuery "foreach"
+ * https://api.jquery.com/jQuery.each/
+ * [Accessed 2014-02-26]
+ * 
+ * Ajax to pull data
+ * https://api.jquery.com/jQuery.ajax/
+ * [Accessed 2014-02-26]
+ * 
+ * Pushing data
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+ * [Accessed 2014-02-26]
+ * 
+ * Making a coloured legend (Ben Argo)
+ * https://github.com/benargo/atwd/blob/master/media/js/client.js
+ * [Accessed 2014-02-26]
+ * 
+ * Special credit to Ben Argo for the test script
+ * http://www.cems.uwe.ac.uk/~b2-argo/atwd/test/g2-petzall
+ * [Accessed 2014-02-27]
+ * 
 */
 
 // Run configuration.
@@ -51,27 +76,64 @@ else
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<title>Advanced Topics in Web Development Assignment 2014 - Gunnar Petz&auml;ll</title>
+<title><?php if ($vis != NULL)
+{
+	echo $current_region; ?> visualised - ATWD 2014 (Gunnar Petz&auml;ll)<?php
+}
+else
+{
+	?>Documentation - ATWD 2014 (Gunnar Petz&auml;ll)<?php
+}
+?></title>
 
 <!-- <link rel="shortcut icon" href="favicon.ico"> -->
 
 
 <link rel='stylesheet' media='screen' href='css/main.css' />
 
+<script src="js/Chart.js"></script>
+<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
 
-<script>
-$.ajax({
-	url: "http://cems.uwe.ac.uk/",
-		beforeSend: function( xhr ) {
-	xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
-	}
-})
-.done(function( data ) {
-	if ( console && console.log ) {
-	console.log( "Sample of data:", data.slice( 0, 100 ) );
-	}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+<!--
+
+// Loading this after all the HTML has loaded.
+$(function() {
+	// Some premade colours matching the site.
+	var chartColors = ['#1b4080', '#3d5c93', '#1c3763', '#899cbd', '#102850', '#6b7990', '#d2dae6'];
+	// Setting the Chart.js variables
+	var pieData = [];
+	var barChartData = {labels: [''], datasets: []}; // Also setting only one label, or else it only shows one color...
+	// Pulling data using AJAX from the normal getRegion.php file (or "[GET] Specific Region").
+	$.ajax({
+		url: "http://www.cems.uwe.ac.uk/~g2-petzall/atwd/crimes/6-2013/<?php echo $vis; ?>/json",
+		async: false
+	})
+	.done(function(data) {
+		// jQuery for each area, the function handles key/value.
+		$.each(data.response.crimes.region.area, function(index, value) {
+			// Just pushing value and color, simple.
+			pieData.push({value: value.total, color: chartColors[index]});
+			// Slightly more of a headache to figure out (see the above label).
+			barChartData.datasets.push({
+				fillColor: chartColors[index],
+				strokeColor: chartColors[index],
+				data: [value.total]
+			});
+			// (Look in the references above) Section that has the classes of "charts" AND "legend"; pulls data in to make colours
+			$('section.charts.legend').append('<p class="legend item'+ index +'">'+ value.id +' ('+ value.total +')</p>');
+		});
+		// Add the totals. ONCE.
+		$('section.charts.legend').append('<p class="legend total">'+ data.response.crimes.region.id +' total: '+ data.response.crimes.region.total);
+	});
+	// Run the changes on the loaded charts.
+	var myLine = new Chart(document.getElementById("canvas2").getContext("2d")).Bar(barChartData);	
+	var myPie = new Chart(document.getElementById("canvas1").getContext("2d")).Pie(pieData);
 });
-	
+-->
 </script>
 
 </head>
@@ -80,7 +142,7 @@ $.ajax({
 <header id="top">
 	<div class="inner">
 		<p>Crime Statistics in England and Wales from June 2013</p>
-		<h1><a href="index.php">ATWD</a></h1>
+		<h1><a href="index.php">ATWD.UWE</a></h1>
 	</div>
 </header>
 
@@ -103,15 +165,12 @@ else
 {
 ?>
 		<h1 id="doc">Documentation</h1>
-
 		<p class="intro">All the details about this assignment.</p>
 <?php
 }
 ?>
-	
-	</div>
-
-</header>
+	</div> <!-- /Main header inner div -->
+</header> <!-- /Main header -->
 
 <div id="main_content">
 	<section id="navigation">
@@ -130,22 +189,48 @@ foreach($xml->children() as $region)
 <?php
 } // End of region list foreach loop
 ?>
-
 			</ul>
 			
+			<h2>Handy links</h2>
+			<ul>
+				<li><a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/test/g2-petzall" target="_blank">Ben Argo's API test</a> (new tab)</li>
+				<li><a href="../6-2013/reset" target="_blank">Reset link</a>, if needed (new tab)</li>
+			</ul>
 		</nav>
 	</section>
 	
+<?php
+if ($vis != NULL) // If requesting visualisation: Show it!
+{
+?>	<canvas id="canvas2" height="200" width="400"></canvas>
 	
+	<section class="charts legend"></section>
+	
+	<canvas id="canvas1" height="450" width="450"></canvas>
+	
+<?php
+}
+else // If NOT requesting visualisation: Show documentation.
+{
+?>
+	
+	<style>
+
+	</style>
+	
+	<h2>Challenges</h2>
+	
+	
+	
+	
+	
+	
+<?php
+} // End of visualisation/documentation IF.
+?>
 	
 </div>
 
-
-<style>
-
-
-
-</style>
 
 <footer>
 	<div class="inner">

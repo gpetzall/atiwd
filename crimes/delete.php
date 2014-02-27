@@ -53,9 +53,9 @@ if (isset($_GET['regi'])) { // Region name.
 	$region_element = $xml->xpath("//region[@id='$regi']");
 	if (empty($region_element)) // If it doesn't exist.
 	{
-		$regi = NULL; // Not a valid region.
-		$regi_correct = FALSE;
-		echo 'Region does not exist.';
+		$_GET['err'] = 602; // 'URL pattern error: No such region'
+		require_once('error.php');
+		exit;
 	}
 } else {
 	$regi = NULL;
@@ -63,7 +63,9 @@ if (isset($_GET['regi'])) { // Region name.
 if (isset($_GET['area'])) { // Area name.
 	$area = $_GET['area'];
 } else {
-	$area = NULL;
+	$_GET['err'] = 603; // 'URL pattern error: No area specified'
+	require_once('error.php');
+	exit;
 }
 
 // Setting the crimes.
@@ -103,7 +105,7 @@ else
 }
 
 // If the return was not empty (checks if the area is valid). Starts main if.
-if (!empty($area_element) && $regi_correct == TRUE)
+if (!empty($area_element))
 {
 	$area_element = array_shift($area_element); // Returns the *first* simple XML element.
 	
@@ -305,6 +307,8 @@ if (!empty($area_element) && $regi_correct == TRUE)
 } // End of if the area exists.
 else // If the area doesn't exist.
 {
-	echo 'No such area in the database (or missing in the specified region).';
+	$_GET['err'] = 604; // 'URL pattern error: No such area'
+	require_once('error.php');
+	exit;
 }
 ?>
